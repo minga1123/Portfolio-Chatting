@@ -1,1 +1,12 @@
 /* 여긴 app.css입니다. */
+
+.divSetting {
+    width: 600px;
+    height: 1000px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: white;
+    border : 2px solid black;
+    border-radius: 50px;
+    float: left;
+}
