@@ -11,9 +11,9 @@
     float: left;
 }
 
-#title {
+/* #title {
     background-color: #D5E2F2;
-}
+} */
 
 #mainIcon {
     width: 300px;
@@ -122,7 +122,8 @@
     text-align: center;
     margin: auto;
     border-radius: 15px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background-color: #93c0f7;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
 
     width: 400px;

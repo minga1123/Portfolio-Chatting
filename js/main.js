@@ -21,7 +21,7 @@ var app = new Vue({
                 return;
             } 
             else if(this.userNickname.length < 8){
-                //console.log("8글자 이하");
+                //console.log("8글자 미만");
                 this.userLogin = true;
             } 
             else if(this.userNickname.length > 8) {
