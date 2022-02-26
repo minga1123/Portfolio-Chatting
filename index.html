@@ -19,18 +19,44 @@
     <!-- 전체 div 영역 -->
     <div id="totalDiv">
         <!-- 로그인 페이지 -->
-        <div class="divSetting" id="title">
-            <h1 style="font-family: IM_Hyemin-Regular;">안녕하세요</h1>
+        <div v-if ="!userLogin" class="divSetting" id="title">
+            <!-- <h1 style="font-family: IM_Hyemin-Regular;">안녕하세요</h1> -->
+            <center>
+                <img src="img/main.png" id="mainIcon">
+                <input style="font-family: IM_Hyemin-Regular;" v-model="userNickname" maxlength="10" type="text" id="nickNameInput" autocomplete="off" placeholder="닉네임을 입력하세요!">
+                <input style="font-family: IM_Hyemin-Regular;" v-on:click="getUserNickName" type="button" value="입장하기" id="nickNameBtn">
+            </center>
+
+
+            <!-- PopupPage -->
+            <div class="background">
+                <div class="window">
+                  <div class="popup">
+                      <div class="pupupview">
+                      <center>
+                          <h3 style="font-family: IM_Hyemin-Regular;">닉네임은 8글자 이하만 사용 할 수 있습니다.</h3>
+                        <input v-on:click="closepopup" type="button" value="닫기">
+                      </center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- PopupPage -->
 
         </div>
         <!-- 사용자 선택 화면 -->
-        <!-- <div class="divSetting" id="mainPage">
-
-        </div> -->
+        <div v-if ="userLogin && !chatting" class="divSetting" id="mainPage">
+            
+            <center id="mainTop">
+                <input v-on:click="goLoginPage" id = "mainbackBtn" type="button" value="&#60;">
+                <h1 style="font-family: IM_Hyemin-Regular;" id="mainPageName">{{userNickname}}</h1>
+            </center>
+            
+        </div>
         <!-- 채팅 화면 -->
-        <!-- <div class="divSetting" id="ChatPage">
-
-        </div> -->
+        <div v-if ="userLogin && chatting" class="divSetting" id="ChatPage">
+            <h1>채팅화면</h1>
+        </div>
         
     </div>
     <script src="js/main.js"></script>
