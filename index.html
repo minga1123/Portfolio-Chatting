@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
     <link href="css/app.css" rel="stylesheet"/>
     <title>Portpolio_Chatting</title>
     <style>
-        @font-face {
-            font-family: 'IM_Hyemin-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
+        
     </style>
     
 </head>
 <body>
-    <!-- 전체 div 영역 -->
-    <div id="totalDiv">
+    <div id="TotalDiv">
         <!-- 로그인 페이지 -->
-        <div class="divSetting" id="title">
-            <h1 style="font-family: IM_Hyemin-Regular;">안녕하세요</h1>
+        <div class="divSetting" id="TitlePage" v-if="Title">
+            <img src="/무제/img/mainIcon.png">
+            <input v-model="userName" type="text" placeholder="닉네임을 입력하세요!">
+            <input type="button" value="입장하기" v-on:click="userJoin">
 
         </div>
         <!-- 사용자 선택 화면 -->
-        <!-- <div class="divSetting" id="mainPage">
+        <div class="divSetting" id="MainPage" v-else>
+            <div id="MainTop">
+                <input type="button" value="이전" v-on:click="userBack">
+                <h1>{{userName}}</h1>
+                <input type="button" value="채팅페이지" v-on:click="ChatPage">
+            </div>
+        </div>
 
-        </div> -->
+
         <!-- 채팅 화면 -->
         <!-- <div class="divSetting" id="ChatPage">
 
