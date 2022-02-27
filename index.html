@@ -48,14 +48,33 @@
         <div v-if ="userLogin && !chatting" class="divSetting" id="mainPage">
             
             <center id="mainTop">
-                <input v-on:click="goLoginPage" id = "mainbackBtn" type="button" value="&#60;">
+                <input v-on:click="goLoginPage" style="font-family: IM_Hyemin-Regular;" id = "mainbackBtn" type="button" value="이전">
                 <h1 style="font-family: IM_Hyemin-Regular;" id="mainPageName">{{userNickname}}</h1>
+                <input v-on:click="goChattingPage" style="font-family: IM_Hyemin-Regular;" id = "testBtn" type="button" value="채팅">
             </center>
+            <div id="mainSection">
+
+            </div>
             
         </div>
         <!-- 채팅 화면 -->
         <div v-if ="userLogin && chatting" class="divSetting" id="ChatPage">
-            <h1>채팅화면</h1>
+            
+            <center id="chatTop">
+                <input v-on:click="goMainPage" style="font-family: IM_Hyemin-Regular;" id = "mainbackBtn" type="button" value="이전">
+                <h1 style="font-family: IM_Hyemin-Regular;" id="chatUserNickname">{{userNickname}}</h1>
+            </center>
+
+            <div id="chatSection">
+
+            </div>
+            <div id="chattingSection">
+
+                <input style="font-family: IM_Hyemin-Regular;" type="text" id="inputText" v-model = "userChatting" autocomplete="off">
+                <input style="font-family: IM_Hyemin-Regular;" type="button" value="전송" id="inputbtn" v-on:click = "sendChatting">
+                
+            </div>
+
         </div>
         
     </div>

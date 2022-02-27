@@ -7,6 +7,7 @@ var app = new Vue({
         userNickname : null,
         userLogin : false,
         chatting : false,
+        userChatting : null,
     },
 
     components : {
@@ -34,6 +35,20 @@ var app = new Vue({
         goLoginPage : function() {
             this.userLogin = false;
             this.userNickname = null;
+        },
+
+        goChattingPage : function() {
+            this.chatting = true;
+        },
+
+        goMainPage : function() {
+            this.chatting = false;
+            this.userChatting = null;
+        },
+
+        sendChatting : function() {
+            //채팅 전송
+            this.userChatting = null;
         },
 
         closepopup : function() {
