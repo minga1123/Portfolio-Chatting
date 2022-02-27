@@ -85,6 +85,7 @@
 
 
 /*------------------------------------------------------*/
+
 .background {
     position: fixed;
     top: 0;
@@ -125,7 +126,7 @@
     /* background-color: #ffffff; */
     background-color: #93c0f7;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
-
+    /* 여기 수정하면 팝업창 크기가 바껴요*/
     width: 400px;
     height: 200px;
 
