@@ -15,18 +15,27 @@
     <div id="TotalDiv">
         <!-- 로그인 페이지 -->
         <div class="divSetting" id="TitlePage" v-if="Title">
-            <img src="img/TitleIcon.png" id="mainIcon">
+            <img src="img/TitleIcon.png" id="TitleIcon">
             <input type="text" placeholder="닉네임을 입력하세요!" v-model="userName">
             <input type="button" value="입장하기" v-on:click="JoinBtn">
+
+            <div class="background">
+                <div class="background-popup">
+                    <div class="background-popupview">
+                        <h3>닉네임은 8글자로만 사용할 수 있습니다.</h3>
+                        <input type="button" value="닫기" @click="popupCloseBtn">
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- 사용자 선택 화면 -->
         <div class="divSetting" id="MainPage" v-if="!Title && !Chat">
             <div id="header">
-                <!-- input 아이디 수정하기!!!!! -->
-                <input id="MainTop_TitlePage" type="button" value="이전" v-on:click="TitleBackBtn">
+                <input id="BackInput" type="button" value="이전" v-on:click="TitleBackBtn">
                 <h1>{{userName}}</h1>
-                <input id="MainTop_ChatPage" type="button" value="채팅" v-on:click="ChatBtn">
+                <!-- 새로고침 버튼으로 변경하기 -->
+                <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn">
             </div>
             <div id="MainContent">
                 <h1>같은 섭 접속자 1</h1>
@@ -35,12 +44,12 @@
         <!-- 채팅 화면 -->
         <div class="divSetting" id="ChatPage" v-if="Chat">
             <div id="header">
-                <input id="MainTop_TitlePage"type="button" value="이전" v-on:click="MainBackBtn">
+                <input id="BackInput"type="button" value="이전" v-on:click="MainBackBtn">
                 <h1>{{userName}}</h1>
-                <input id="MainTop_ChatPage" type="button" value="채팅" v-on:click="ChatBtn">
+                <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn">
             </div>
             <div id="ChatContent">
-                <input id="userChat" type="text" v-model="userChat">
+                <input id="userChatInput" type="text" v-model="userChat">
                 <input id="userSend" type="button" value="전송" @click="SendBtn">
             </div>
         </div>

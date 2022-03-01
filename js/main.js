@@ -5,7 +5,8 @@ var app = new Vue({
         // 사용 할 변수들 
         userName : null,
         Title : true,
-        Chat : false
+        Chat : false,
+        userChat : null
         
     },
     components : {
@@ -16,11 +17,12 @@ var app = new Vue({
     methods : {
         // Vue 메서드 
         JoinBtn: function(){
-            if(this.userName!=null && this.userName.length<8){
+            if(this.userName!=null && this.userName.length<=8){
                 console.log("입장하기");
                 this.Title=false;
-            } else if(this.userName.length>8){
+            } else if(this.userName.length>=8){
                 console.log("8글자보다 큼");
+                document.querySelector(".background").className = "background show";
                 this.userName=null;
                 //팝업
             }
@@ -39,8 +41,13 @@ var app = new Vue({
         MainBackBtn: function(){
             console.log("Chat->Main 이전 버튼");
             this.Chat=false;
+        },
+        popupCloseBtn: function(){
+            document.querySelector(".background").className = "background";
+        },
+        SendBtn: function(){
+            console.log("메세지 전송 버튼");
         }
-
     },
     
     created : function() {
