@@ -15,27 +15,34 @@
     <div id="TotalDiv">
         <!-- 로그인 페이지 -->
         <div class="divSetting" id="TitlePage" v-if="Title">
-            <img src="/img/mainIcon.png" id="mainIcon">
-            <input v-model="userName" type="text" placeholder="닉네임을 입력하세요!">
-            <input type="button" value="입장하기" v-on:click="userJoin">
+            <img src="img/TitleIcon.png" id="mainIcon">
+            <input type="text" placeholder="닉네임을 입력하세요!" v-model="userName">
+            <input type="button" value="입장하기" v-on:click="JoinBtn">
 
         </div>
         <!-- 사용자 선택 화면 -->
-        <div class="divSetting" id="MainPage" v-if="Main">
-            <div id="MainTop">
-                <input id="MainTop_TitlePage"type="button" value="이전" v-on:click="userBack">
+        <div class="divSetting" id="MainPage" v-if="!Title && !Chat">
+            <div id="header">
+                <!-- input 아이디 수정하기!!!!! -->
+                <input id="MainTop_TitlePage" type="button" value="이전" v-on:click="TitleBackBtn">
                 <h1>{{userName}}</h1>
-                <input id="MainTop_ChatPage" type="button" value="채팅">
+                <input id="MainTop_ChatPage" type="button" value="채팅" v-on:click="ChatBtn">
             </div>
             <div id="MainContent">
-                
+                <h1>같은 섭 접속자 1</h1>
             </div>
         </div>
-
-
         <!-- 채팅 화면 -->
         <div class="divSetting" id="ChatPage" v-if="Chat">
-
+            <div id="header">
+                <input id="MainTop_TitlePage"type="button" value="이전" v-on:click="MainBackBtn">
+                <h1>{{userName}}</h1>
+                <input id="MainTop_ChatPage" type="button" value="채팅" v-on:click="ChatBtn">
+            </div>
+            <div id="ChatContent">
+                <input id="userChat" type="text" v-model="userChat">
+                <input id="userSend" type="button" value="전송" @click="SendBtn">
+            </div>
         </div>
         
     </div>

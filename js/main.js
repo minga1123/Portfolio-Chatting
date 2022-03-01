@@ -5,7 +5,6 @@ var app = new Vue({
         // 사용 할 변수들 
         userName : null,
         Title : true,
-        Main : false,
         Chat : false
         
     },
@@ -16,23 +15,30 @@ var app = new Vue({
 
     methods : {
         // Vue 메서드 
-        userJoin: function(){
-            console.log("입장하기");
-            if(this.userName.legth>8){
-                console.log("8글자보다 큼");
-            }
-
-            if(this.userName!=null && this.userName.legth<8){
+        JoinBtn: function(){
+            if(this.userName!=null && this.userName.length<8){
+                console.log("입장하기");
                 this.Title=false;
-                this.Main=true;
+            } else if(this.userName.length>8){
+                console.log("8글자보다 큼");
+                this.userName=null;
+                //팝업
             }
 
         },
-        userBack: function(){
-            console.log("뒤로가기");
-            this.Main=false;
+        TitleBackBtn: function(){
+            console.log("Main->Title 이전 버튼");
             this.Title=true;
             this.userName=null;
+        },
+
+        ChatBtn: function(){
+            console.log("admin chat btn");
+            this.Chat=true;
+        },
+        MainBackBtn: function(){
+            console.log("Chat->Main 이전 버튼");
+            this.Chat=false;
         }
 
     },
