@@ -1,4 +1,6 @@
 
+var socket = io();
+
 var app = new Vue({
     el : "#TotalDiv",
     data : {
@@ -52,6 +54,12 @@ var app = new Vue({
     
     created : function() {
         // 소켓 연결 할 부분
+        socket.on('connect', function(){
+            console.log('클라이언트 수신 되었음');
+            socket.on('userJoin',function(){
+
+            });
+        });
 
     }
 });
