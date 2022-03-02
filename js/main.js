@@ -35,6 +35,7 @@ var app = new Vue({
         },
         goLoginPage : function() {
             this.userLogin = false;
+            socket.emit('userLogOut', {userName : this.userNickname});
             this.userNickname = null;
         },
 
