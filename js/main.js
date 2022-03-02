@@ -1,5 +1,5 @@
 //여긴 main.js 입니다.
-
+var socket = io();
 var app = new Vue({
     el : '#totalDiv',
     data : {
@@ -24,6 +24,7 @@ var app = new Vue({
             else if(this.userNickname.length < 8){
                 //console.log("8글자 미만");
                 this.userLogin = true;
+                socket.emit('userLogin', {userName : this.userNickname});
             } 
             else if(this.userNickname.length > 8) {
                 //console.log("9글자 이상");
@@ -60,5 +61,8 @@ var app = new Vue({
     created : function() {
         // 소켓 연결 할 부분
 
+        socket.on('connect', function(){
+
+        });
     }
 });

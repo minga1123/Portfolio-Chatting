@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
-    <link href="css/app.css" rel="stylesheet"/>
+    <link href="app.css" rel="stylesheet"/>
+    <script src="/socket.io/socket.io.js"></script>
     <title>Portpolio_Chatting</title>
     <style>
         @font-face {
@@ -22,7 +23,7 @@
         <div v-if ="!userLogin" class="divSetting" id="title">
             <!-- <h1 style="font-family: IM_Hyemin-Regular;">안녕하세요</h1> -->
             <center>
-                <img src="img/main.png" id="mainIcon">
+                <img src="main.png" id="mainIcon">
                 <input style="font-family: IM_Hyemin-Regular;" v-model="userNickname" maxlength="10" type="text" id="nickNameInput" autocomplete="off" placeholder="닉네임을 입력하세요!">
                 <input style="font-family: IM_Hyemin-Regular;" v-on:click="getUserNickName" type="button" value="입장하기" id="nickNameBtn">
             </center>
@@ -78,6 +79,6 @@
         </div>
         
     </div>
-    <script src="js/main.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>
