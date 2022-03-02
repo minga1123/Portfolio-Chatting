@@ -32,6 +32,5 @@ io.sockets.on('connection', function(socket) {
         userID.push(userName.userName);
         console.log(userID);
         console.log(userID.length);
-    })
-
+    });
 });
