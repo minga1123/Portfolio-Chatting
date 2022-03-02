@@ -28,14 +28,14 @@ io.sockets.on('connection', function(socket) {
 
     socket.on('userLogin', function(userName){
         
-        console.log(userName.userName + '님이 로그인 했습니다.');
+        console.log(userName.userName + ' 님이 로그인 했습니다.');
         userID.push(userName.userName);
         console.log(userID);
         console.log(userID.length);
     });
 
     socket.on('userLogOut', function(userName){
-        console.log(userName.userName + '님이 로그아웃 했습니다.');
+        console.log(userName.userName + ' 님이 로그아웃 했습니다.');
         userID.splice(userID.indexOf(userName.userName),1);
         console.log(userID);
         console.log(userID.length);
