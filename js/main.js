@@ -1,12 +1,15 @@
 //여긴 main.js 입니다.
 var socket = io();
-
+const loginUsers = [];
 // ----------------------
 var userLists = {
-    template : '<div class="userDiv"> ddd </div>',
+    template : '<div class="userDiv"></div>',
+    // 서버에 접속 중인 userNickName 
+
 
     methods : {
-
+        // onclick < 메서드 >
+        // 이 사람한테 채팅을 보내기 위한 요청
     }
 }
 
@@ -21,12 +24,19 @@ var app = new Vue({
         userLogin : false,
         chatting : false,
         userChatting : null,
-        loginUser : [],
+        logins : 1,
+        
     },
 
     components : {
         //컴포넌트 추가
         'loginuser' : userLists,
+    },
+
+    computed: {
+        seconds: function() {
+            return loginUsers.length;
+        }
     },
 
     methods : {
@@ -78,11 +88,13 @@ var app = new Vue({
 
         socket.on('connect', function(){
             socket.on('userIdPost', function(serverData) {
-                if(this.userNickname === serverData.userName) {
-                    return;
-                }
-                this.loginUser.push(serverData.userName);
-                console.log(this.loginUser);
+                
+                console.log(serverData);
+                this.logins += 1;
+                console.log(this.logins);
+                loginUsers.push(serverData.userName);
+                console.log(loginUsers);
+                console.log(loginUsers.length);
             });
         });
     }
