@@ -32,6 +32,7 @@ io.sockets.on('connection', function(socket) {
         userID.push(userName.userName);
         console.log(userID);
         console.log(userID.length);
+        io.sockets.emit('userIdPost', {userID : userName.userName});
     });
 
     socket.on('userLogOut', function(userName){

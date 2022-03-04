@@ -227,3 +227,26 @@
     transform: translate(-50%, -50%);
     transition: all 0.5s;
   }
+
+
+/* ------------------------- */
+
+.userDiv {
+    background-color: rgb(254, 213, 195);
+    width: 450px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 25px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#userDiv {
+    position: absolute;
+    width: 500px;
+    height: 750px;
+    margin-top: 50px;
+    margin-left: 25px;
+    background-color: white;
+}

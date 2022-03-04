@@ -54,7 +54,9 @@
                 <input v-on:click="goChattingPage" style="font-family: IM_Hyemin-Regular;" id = "testBtn" type="button" value="채팅">
             </center>
             <div id="mainSection">
-
+                <div id="userDiv">
+                    <loginuser v-for="user in loginUser"></loginuser>
+                </div>
             </div>
             
         </div>

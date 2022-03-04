@@ -1,5 +1,18 @@
 //여긴 main.js 입니다.
 var socket = io();
+
+// ----------------------
+var userLists = {
+    template : '<div class="userDiv"> ddd </div>',
+
+    methods : {
+
+    }
+}
+
+
+
+// ---------------------
 var app = new Vue({
     el : '#totalDiv',
     data : {
@@ -8,11 +21,12 @@ var app = new Vue({
         userLogin : false,
         chatting : false,
         userChatting : null,
+        loginUser : [],
     },
 
     components : {
         //컴포넌트 추가
-
+        'loginuser' : userLists,
     },
 
     methods : {
@@ -63,7 +77,13 @@ var app = new Vue({
         // 소켓 연결 할 부분
 
         socket.on('connect', function(){
-
+            socket.on('userIdPost', function(serverData) {
+                if(this.userNickname === serverData.userName) {
+                    return;
+                }
+                this.loginUser.push(serverData.userName);
+                console.log(this.loginUser);
+            });
         });
     }
 });
