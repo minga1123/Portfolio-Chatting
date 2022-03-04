@@ -1,6 +1,7 @@
 //여긴 main.js 입니다.
 var socket = io();
 const loginUsers = [];
+
 // ----------------------
 var userLists = {
     template : '<div class="userDiv"></div>',
@@ -10,6 +11,9 @@ var userLists = {
     methods : {
         // onclick < 메서드 >
         // 이 사람한테 채팅을 보내기 위한 요청
+        getuserID : function() {
+          
+        }
     }
 }
 
@@ -24,8 +28,7 @@ var app = new Vue({
         userLogin : false,
         chatting : false,
         userChatting : null,
-        logins : 1,
-        
+        logins : 0,  
     },
 
     components : {
@@ -87,15 +90,20 @@ var app = new Vue({
         // 소켓 연결 할 부분
 
         socket.on('connect', function(){
-            socket.on('userIdPost', function(serverData) {
-                
+            socket.on('userLoginList', function(serverData) {
                 console.log(serverData);
-                this.logins += 1;
-                console.log(this.logins);
+                app.logins = serverData.logincount - 1;
+                console.log(app.logins);
                 loginUsers.push(serverData.userName);
                 console.log(loginUsers);
                 console.log(loginUsers.length);
             });
+
+            socket.on('userLogoutList', function(serverData) {
+                app.logins = serverData.logoutcount - 1;
+                loginUsers.splice(loginUsers.indexOf(serverData.logoutID), 1);
+            })
+            
         });
     }
 });

@@ -32,7 +32,7 @@ io.sockets.on('connection', function(socket) {
         userID.push(userName.userName);
         console.log(userID);
         console.log(userID.length);
-        io.sockets.emit('userIdPost', userName);
+        io.sockets.emit('userLoginList', {userName : userName.userName, logincount : userID.length});
     });
 
     socket.on('userLogOut', function(userName){
@@ -40,5 +40,6 @@ io.sockets.on('connection', function(socket) {
         userID.splice(userID.indexOf(userName.userName),1);
         console.log(userID);
         console.log(userID.length);
+        io.sockets.emit('userLogoutList', {logoutID : userName.userName, logoutcount : userID.length});
     });
 });
