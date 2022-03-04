@@ -1,6 +1,6 @@
 //여긴 main.js 입니다.
 var socket = io();
-const loginUsers = [];
+var loginUsers = [];
 
 // ----------------------
 var userLists = {
@@ -10,10 +10,15 @@ var userLists = {
         // onclick < 메서드 >
         // 이 사람한테 채팅을 보내기 위한 요청
         getuserID : function() {
-            
+            // if(loginUsers[app.logins - 1] === app.userNickname) {
+            //     return false;
+            // }
+            // else {
+            //     return true;
+            // }
         },
-        chattings : function() {
-            
+        chattings : function() {   
+            // console.log(loginUsers[app.logins - 1]);
         }
     }
 }
