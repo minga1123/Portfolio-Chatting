@@ -4,15 +4,16 @@ const loginUsers = [];
 
 // ----------------------
 var userLists = {
-    template : '<div class="userDiv"></div>',
+    template : '<div class="userDiv" v-on:click="chattings"></div>',
     // 서버에 접속 중인 userNickName 
-
-
     methods : {
         // onclick < 메서드 >
         // 이 사람한테 채팅을 보내기 위한 요청
         getuserID : function() {
-          
+            
+        },
+        chattings : function() {
+            
         }
     }
 }
@@ -82,6 +83,10 @@ var app = new Vue({
 
         closepopup : function() {
             document.querySelector(".background").className = "background";
+        },
+
+        update : function(data) {
+            //document.getElementById('userDiv').append(data);
         }
 
     },
@@ -97,13 +102,15 @@ var app = new Vue({
                 loginUsers.push(serverData.userName);
                 console.log(loginUsers);
                 console.log(loginUsers.length);
+                //app.update(serverData.userName);
+                
             });
 
             socket.on('userLogoutList', function(serverData) {
                 app.logins = serverData.logoutcount - 1;
                 loginUsers.splice(loginUsers.indexOf(serverData.logoutID), 1);
             })
-            
+
         });
     }
 });

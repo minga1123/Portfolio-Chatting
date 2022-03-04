@@ -32,14 +32,16 @@ io.sockets.on('connection', function(socket) {
         userID.push(userName.userName);
         console.log(userID);
         console.log(userID.length);
-        io.sockets.emit('userLoginList', {userName : userName.userName, logincount : userID.length});
+        io.sockets.emit('userLoginList', {userName : userName.userName, logincount : userID.length, total : userID});
     });
 
     socket.on('userLogOut', function(userName){
         console.log(userName.userName + ' 님이 로그아웃 했습니다.');
         userID.splice(userID.indexOf(userName.userName),1);
+        // splice( ? , 1)
+        // indexOf(배열에 있는 값) < 인덱스 번호 // 배열에 있지 않은 값 < -1
         console.log(userID);
         console.log(userID.length);
-        io.sockets.emit('userLogoutList', {logoutID : userName.userName, logoutcount : userID.length});
+        io.sockets.emit('userLogoutList', {logoutID : userName.userName, logoutcount : userID.length, total : userID});
     });
 });
