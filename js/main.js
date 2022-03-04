@@ -22,18 +22,22 @@ var app = new Vue({
             if(this.userName!=null && this.userName.length<=8){
                 console.log("입장하기");
                 this.Title=false;
+                socket.emit('userlogin',{userName:this.userName});
             } else if(this.userName.length>=8){
                 console.log("8글자보다 큼");
+                //팝업
                 document.querySelector(".background").className = "background show";
                 this.userName=null;
-                //팝업
+                
             }
 
         },
         TitleBackBtn: function(){
             console.log("Main->Title 이전 버튼");
             this.Title=true;
+            socket.emit('userlogout',{userName:this.userName});
             this.userName=null;
+            
         },
 
         ChatBtn: function(){
@@ -55,10 +59,8 @@ var app = new Vue({
     created : function() {
         // 소켓 연결 할 부분
         socket.on('connect', function(){
-            console.log('클라이언트 수신 되었음');
-            socket.on('userJoin',function(){
+            console.log('소켓 연결');
 
-            });
         });
 
     }

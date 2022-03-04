@@ -59,10 +59,12 @@ body {
     margin-bottom: 50px;
 }
 /* ==== Main page ==== */
-#MainContent{
+
+
+/* #MainContent{
     background: var(--green);
     
-}
+} */
 
 #MainPage{
     width: auto;
@@ -106,20 +108,19 @@ body {
 }
 
 #MainContent{
-    display: flex;
-    width: 580px;
+    width: 560px;
+    height: 80px;
     border-radius: 25px;
-    background: var(--green);
     margin-top: 20px;
     margin-left: 10px;
     justify-content: center;
 }
 /* ==== Chat page ==== */
-#ChatContent{
+.Content{
     display: flex;
     width: 580px;
     height: 790px;
-    background: var(--green);
+    background: var(--yellow);
     border-radius: 25px;
     text-align: center;
     margin-top: 10px;

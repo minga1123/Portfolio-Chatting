@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-
+//=====//
+var userId = [];
 //=====정적파일 설정=====//
 const static = require('serve-static');
 const path = require('path');
@@ -17,14 +18,18 @@ app.get('/', function (req, res) {
 app.get('/login', function (req, res) {
     res.sendfile(__dirname + '/index.html');
 }); 
-server.listen(5000, () => {
+server.listen(3000, () => {
     console.log("server open 3000");
 }); 
 
-//io.sockets 나를 포함한 모든 소켓의 객체, 소켓이 connection되면 호출되는 On(발신)이벤트
-io.sockets.on('connection', function (socket) {
-    console.log('서버 접속 되었음');
-    socket.on('userJoin', function(userName){
-        console.log();
-    });
+
+io.sockets.on('connection', function(socket) {
+   socket.on('userlogin', function(userName){
+       console.log(userName.userName + '님이 로그인했습니다.');
+       userId.push(userName.userName);
+       console.log(userId + "," + userId.length + "명 접속");
+   });
+   socket.on('userlogout', function (userName) {
+       console.log(userName.userName + '님이 로그아웃했습니다.');
+   });
 });
