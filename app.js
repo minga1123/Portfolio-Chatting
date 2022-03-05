@@ -54,4 +54,14 @@ io.sockets.on('connection', function(socket) {
         console.log(successChat.reqestUser +' 님이 수락하였습니다.');
         io.sockets.emit('successChatting', successChat);
     });
+
+    socket.on('failChat', function(failChat) {
+        console.log(failChat.reqestUser + ' 님이 거절하였습니다.');
+        io.sockets.emit('failChatting', failChat);
+    });
+
+    socket.on('endChat' , function(chatData) {
+        console.log(chatData.reqestUser + ' 님과 ' + chatData.myName + ' 님의 채팅이 종료되었습니다.');
+        io.sockets.emit('endChatting', chatData);
+    });
 });

@@ -60,6 +60,26 @@
                     
                 </div>
             </div>
+
+
+            <!-- PopupPage -->
+            <div class="background1">
+                <div class="window1">
+                  <div class="popup1">
+                      <div class="pupupview1">
+                      <center>
+                        <div id="testDiv">
+                            <h1>test</h1>
+                        </div>
+                            <input v-if="!requestChat" v-on:click="successChat" type="button" value="수락">
+                            <input v-if="!requestChat" v-on:click="closepopup1" type="button" value="거절">
+                            <input v-if="requestChat" v-on:click="failChat" type="button" value="닫기">
+                      </center>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- PopupPage -->
             
         </div>
         <!-- 채팅 화면 -->
