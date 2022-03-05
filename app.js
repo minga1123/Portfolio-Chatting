@@ -44,7 +44,7 @@ io.sockets.on('connection', function(socket) {
         console.log(userID.length);
         io.sockets.emit('userLogoutList', {logoutID : userName.userName, logoutcount : userID.length, total : userID});
     });
-
+    // 서버에서 이벤트를 받게 되면 다시 클라이언트 쪽으로 전달 하고 클라이언트에서 if문을 통해 자신에게 온 이벤트만 받도록 설정
     socket.on('requset_user', function(userName) {
         console.log(userName.reqestUser + ' 님에게 '+ userName.myName + '님이 채팅을 요청하였습니다.');
         io.sockets.emit('respone_user', userName);
