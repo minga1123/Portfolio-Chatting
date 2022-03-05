@@ -44,4 +44,14 @@ io.sockets.on('connection', function(socket) {
         console.log(userID.length);
         io.sockets.emit('userLogoutList', {logoutID : userName.userName, logoutcount : userID.length, total : userID});
     });
+
+    socket.on('requset_user', function(userName) {
+        console.log(userName.reqestUser + ' 님에게 '+ userName.myName + '님이 채팅을 요청하였습니다.');
+        io.sockets.emit('respone_user', userName);
+    });
+
+    socket.on('success', function(successChat) {
+        console.log(successChat.reqestUser +' 님이 수락하였습니다.');
+        io.sockets.emit('successChatting', successChat);
+    });
 });

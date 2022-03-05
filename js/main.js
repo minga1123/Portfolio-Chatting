@@ -35,6 +35,7 @@ var app = new Vue({
         chatting : false,
         userChatting : null,
         logins : 0,  
+        testName : null,
     },
 
     components : {
@@ -70,10 +71,11 @@ var app = new Vue({
             this.userLogin = false;
             socket.emit('userLogOut', {userName : this.userNickname});
             this.userNickname = null;
+            //app.userUpdate();
         },
 
         goChattingPage : function() {
-            this.chatting = true;
+            //his.chatting = true;
         },
 
         goMainPage : function() {
@@ -90,8 +92,43 @@ var app = new Vue({
             document.querySelector(".background").className = "background";
         },
 
-        update : function(data) {
-            //document.getElementById('userDiv').append(data);
+        testFunction : function(event) {
+            console.log(event.target.innerText);
+            socket.emit('requset_user', {reqestUser : event.target.innerText, myName : this.userNickname});
+        },
+
+        update : function(serverData) {
+                if(this.userNickname === serverData) {
+                    return;
+                }
+                let div = document.createElement('div');
+                div.className = 'userDiv';
+                this.testName = serverData;
+                //div.setAttribute('v-if', 'false');
+                console.log(serverData);
+                let text = document.createTextNode(serverData);
+                div.appendChild(text);
+                document.getElementById('userDiv').appendChild(div);
+                //document.getElementById('userDiv').innerHTML = "<div class='userDiv'></div>"; 
+
+        },
+        userUpdate : function() {
+            var count = document.getElementById('userDiv').childElementCount;
+            for(var i = 0; i < count; i++) {
+                document.getElementById('userDiv').removeChild(document.getElementById('userDiv').firstChild);
+            }
+
+            for(var i = 0; i < this.logins; i++) {
+                if(this.userNickname !== loginUsers[i]) {
+                    let div = document.createElement('div');
+                    div.className = 'userDiv';
+                    //div.setAttribute('v-on:click', 'testFunction');
+                    div.addEventListener('click', app.testFunction);
+                    let text = document.createTextNode(loginUsers[i]);
+                    div.appendChild(text);
+                    document.getElementById('userDiv').appendChild(div);
+                }
+            }
         }
 
     },
@@ -102,19 +139,41 @@ var app = new Vue({
         socket.on('connect', function(){
             socket.on('userLoginList', function(serverData) {
                 console.log(serverData);
-                app.logins = serverData.logincount - 1;
+                app.logins = serverData.logincount;
                 console.log(app.logins);
-                loginUsers.push(serverData.userName);
+                loginUsers = serverData.total.filter(() => true);
+                //loginUsers.push(serverData.userName);
                 console.log(loginUsers);
                 console.log(loginUsers.length);
                 //app.update(serverData.userName);
+                if(app.userLogin) {
+                    app.userUpdate();
+                }
                 
             });
 
             socket.on('userLogoutList', function(serverData) {
-                app.logins = serverData.logoutcount - 1;
-                loginUsers.splice(loginUsers.indexOf(serverData.logoutID), 1);
-            })
+                app.logins = serverData.logoutcount;
+                loginUsers = serverData.total.filter(() => true);
+                //loginUsers.splice(loginUsers.indexOf(serverData.logoutID), 1);
+                app.userUpdate();
+            });
+
+            socket.on('respone_user', function(serverData) {
+                if(serverData.reqestUser === app.userNickname){
+                    //success // fail
+                    console.log(serverData.myName + ' 님이 채팅을 요청 하였습니다.');
+
+                    socket.emit('success', serverData);
+                }
+            });
+
+            socket.on('successChatting', function(serverData) {
+                if(serverData.reqestUser === app.userNickname || serverData.myName === app.userNickname) {
+                    app.chatting = true;
+                    //document.getElementById('chatUserNickname').innerHTML = serverData.myName;
+                }
+            });
 
         });
     }
