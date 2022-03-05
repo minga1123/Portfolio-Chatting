@@ -131,21 +131,7 @@ var app = new Vue({
             document.getElementById('testDiv').prepend(h1);
             socket.emit('requset_user', {reqestUser : event.target.innerText, myName : this.userNickname});
         },
-
-        update : function() {
-            for(var i = 0; i < this.logins; i++) {
-                if(this.userNickname !== loginUsers[i]) {
-                    let div = document.createElement('div');
-                    div.className = 'userDiv';
-                    //div.setAttribute('v-on:click', 'testFunction');
-                    div.addEventListener('click', app.testFunction);
-                    let text = document.createTextNode(loginUsers[i]);
-                    div.appendChild(text);
-                    document.getElementById('userDiv').appendChild(div);
-                }
-            }
-
-        },
+        
         userUpdate : function() {
             if(!this.chatting) {
                 var count = document.getElementById('userDiv').childElementCount;
