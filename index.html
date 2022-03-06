@@ -38,20 +38,19 @@
                 <!-- 새로고침 버튼으로 변경하기 -->
                 <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn">
             </div>
-            <!-- width수정 -->
-            <div id="Content" style="overflow:auto;">
+            <div id="Content" style="overflow-y: scroll">
                 <div id="MainContent">
-                    <div>
-
-                    </div>
+                    
                 </div>
             </div>
             <!-- 팝업생성 -->
             <div class="background1">
                 <div class="background-popup1">
                     <div class="background-popupview">
-                        <h3>닉네임은 8글자로만 사용할 수 있습니다.</h3>
-                        <input type="button" value="닫기" @click="popupCloseBtn">
+                        <div id="ChatPopup">
+                            <input type="button" value="수락" @click="ChatAcceptBtn">
+                            <input type="button" value="거절" @click="ChatRefuseCloseBtn">
+                        </div>
                     </div>
                 </div>
             </div>
