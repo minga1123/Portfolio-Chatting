@@ -218,6 +218,7 @@ var app = new Vue({
                     document.querySelector(".background1").className = "background1 show1";
                 }
             });
+            
             // 채팅 수락 시 이벤트 처리
             socket.on('successChatting', function(serverData) {
                 // 요청 한 사람, 요청 받은 사람 둘 다 처리 해주기 위해 or 연산자를 사용해서 이벤트 처리
@@ -227,6 +228,7 @@ var app = new Vue({
                     //document.getElementById('chatUserNickname').innerHTML = serverData.myName;
                 }
             });
+
             // 채팅 거절 시 이벤트 처리
             socket.on('failChatting', function(serverData) {
                 // 요청 한 사람, 요청 받은 사람 둘 다 같이 이벤트 처리 
