@@ -103,13 +103,17 @@ body {
 }
 
 .MainContent{
-    width: 560px;
+    width: 559px;
     height: 80px;
     border-radius: 25px;
     margin-top: 20px;
     margin-left: 10px;
     justify-content: center;
     background-color: var(--bg);
+    font-family: 'IM_Hyemin-Regular.otf';
+    font-size: 25px;
+    line-height: 1.5;
+    font-weight: 400;
 }
 /* ==== Chat page ==== */
 #Content{

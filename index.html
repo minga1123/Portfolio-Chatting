@@ -19,7 +19,7 @@
             <img src="TitleIcon.png" id="TitleIcon">
             <input type="text" placeholder="닉네임을 입력하세요!" v-model="userName">
             <input type="button" value="입장하기" v-on:click="JoinBtn">
-
+            <!-- 팝업생성 -->
             <div class="background">
                 <div class="background-popup">
                     <div class="background-popupview">
@@ -38,9 +38,21 @@
                 <!-- 새로고침 버튼으로 변경하기 -->
                 <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn">
             </div>
+            <!-- width수정 -->
             <div id="Content" style="overflow:auto;">
                 <div id="MainContent">
-                    
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- 팝업생성 -->
+            <div class="background1">
+                <div class="background-popup1">
+                    <div class="background-popupview">
+                        <h3>닉네임은 8글자로만 사용할 수 있습니다.</h3>
+                        <input type="button" value="닫기" @click="popupCloseBtn">
+                    </div>
                 </div>
             </div>
             

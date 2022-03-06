@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 app.get('/login', function (req, res) {
     res.sendfile(__dirname + '/index.html');
 }); 
-server.listen(8000, () => {
+server.listen(4000, () => {
     console.log("server open 3000");
 }); 
 
@@ -28,14 +28,13 @@ io.sockets.on('connection', function(socket) {
        console.log(userName.userName + '님이 로그인했습니다.');
        userId.push(userName.userName);
        console.log(userId);
-       socket.emit('loginInfo',{userName:userName.userName, loginCount:userId.length, userArray:userId});
-       
+       io.sockets.emit('loginInfo',{userName:userName.userName, loginCount:userId.length, userArray:userId});
    });
    socket.on('userlogout', function (userName) {
        console.log(userName.userName + '님이 로그아웃했습니다.');
        //splice(변경할 배열 인덱스 값, 제거 개수) 로그아웃한 유저를 userID배열에서 삭제
        userId.splice(userId.indexOf(userName.userName),1);
        console.log(userId);
-       socket.emit('loginoutInfo',{userName:userName.userName, logoutCount:userId.length, userArray:userId});
+       io.sockets.emit('loginoutInfo',{userName:userName.userName, logoutCount:userId.length, userArray:userId});
    });
 });

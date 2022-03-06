@@ -62,16 +62,14 @@ var app = new Vue({
         SendBtn: function(){
             console.log("메세지 전송 버튼");
         },
-                //MainPage에서 같은 서버에 접속한 severData 수 만큼 동적 div 생성 (appendChild)
+        //MainPage에서 같은 서버에 접속한 severData 수 만큼 동적 div 생성 (appendChild)
         addUserDiv : function(){
-             
             if(this.Chat) {
                 var count = document.getElementById('MainContent').childElementCount;
                 for(var i = 0; i < count; i++) {
                     document.getElementById('MainContent').removeChild(document.getElementById('MainContent').firstChild);
                 }
             }            
-
             for(var i=0; i<this.loginCount; i++){
                 if(this.userName!==userInfo[i]){
                     let div = document.createElement('div');
@@ -80,11 +78,14 @@ var app = new Vue({
                     div.appendChild(text);
                     //특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙입니다
                     document.getElementById('MainContent').appendChild(div);
-                    // div.addEventListener('click',app.testFunction);
+                    div.addEventListener('click',app.MainContentClick);
                     
                 }    
             }
             
+        },
+        MainContentClick : function(){
+            console.log('눌리시나요?');
         }
     },
     
