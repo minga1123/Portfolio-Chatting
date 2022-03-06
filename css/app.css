@@ -61,11 +61,6 @@ body {
 /* ==== Main page ==== */
 
 
-/* #MainContent{
-    background: var(--green);
-    
-} */
-
 #MainPage{
     width: auto;
     height: auto;
@@ -107,16 +102,17 @@ body {
     margin-right: 10px;
 }
 
-#MainContent{
+.MainContent{
     width: 560px;
     height: 80px;
     border-radius: 25px;
     margin-top: 20px;
     margin-left: 10px;
     justify-content: center;
+    background-color: var(--bg);
 }
 /* ==== Chat page ==== */
-.Content{
+#Content{
     display: flex;
     width: 580px;
     height: 790px;
