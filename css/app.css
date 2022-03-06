@@ -254,19 +254,37 @@
 
 .chatDiv {
   background-color: white;
-  width: 450px;
-  height: 100px;
+  width: auto;
+  max-width : 460px;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 25px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.chatDiv1 {
+  background-color: white;
+  width: auto;
+  height: auto;
   margin-top: 10px;
   margin-left: 25px;
   font-size: 30px;
   border-radius: 10px;
+  /* margin-left: auto; */
   
 }
 
 .chatPos {
   display: flex;
-  width: auto;
-  height: auto;
+  width: 460px;
+  flex-direction: row-reverse;
+}
+
+.chatPos1 {
+  display: flex;
+  width: 460px;
 }
 
 
@@ -345,6 +363,10 @@
   .show1 .popup1 {
     transform: translate(-50%, -50%);
     transition: all 0.5s;
+  }
+
+  #testDiv {
+    font-size: 15px;
   }
 
 

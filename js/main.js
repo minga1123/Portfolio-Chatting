@@ -99,8 +99,13 @@ var app = new Vue({
 
         sendChatting : function() {
             //채팅 전송
+            if(this.userChatting === null) {
+                return;
+            }
             socket.emit('send_Message', {sendUser : this.userNickname, requestUser : this.reqestID ,sendMessage : this.userChatting});
             this.userChatting = null;
+
+            
         },
 
         successChat : function() {
@@ -278,18 +283,44 @@ var app = new Vue({
                     console.log(serverData.sendMessage);    
                     
                     let div1 = document.createElement('div');
-                    div1.className = 'chatPos';
+
                     let div = document.createElement('div');
+
+                    if(serverData.sendUser === app.userNickname) 
+                    {
+                        div1.className = 'chatPos';
+                    }
+                    else 
+                    {
+                        div1.className = 'chatPos1';
+                    }
+
                     div.className = 'chatDiv';
+                    let today = new Date();   
+                    
+                    let hours = today.getHours(); // 시
+                    let minutes = today.getMinutes();  // 분
+                    let seconds = today.getSeconds();  // 초
+
+                    //document.write(hours + ':' + minutes + ':' + seconds);
+                    
                     let text = document.createTextNode(serverData.sendUser);
                     div.setAttribute('style','font-family: IM_Hyemin-Regular;');
-                    div.appendChild(text);
-                    var br = document.createElement('br');
-                    div.appendChild(br);
+                    // div.appendChild(text);
+                    // var br = document.createElement('br');
+                    // div.appendChild(br);
                     let text1 = document.createTextNode(serverData.sendMessage);
                     div.appendChild(text1);
                     div1.appendChild(div);
+                    var p = document.createElement('p');
+                    var timeText = document.createTextNode('\u00A0' + hours + ':' + minutes + ':' + seconds);
+                    p.appendChild(timeText);
+                    div1.appendChild(p);
+                    p.setAttribute('style','font-family: IM_Hyemin-Regular;');
+
                     document.getElementById('Chatcontent').appendChild(div1);
+
+                    document.getElementById('Chatcontent').scrollTop = document.getElementById('Chatcontent').scrollHeight;
 
                 }
             });
