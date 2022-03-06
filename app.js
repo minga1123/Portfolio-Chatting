@@ -64,4 +64,10 @@ io.sockets.on('connection', function(socket) {
         console.log(chatData.reqestUser + ' 님과 ' + chatData.myName + ' 님의 채팅이 종료되었습니다.');
         io.sockets.emit('endChatting', chatData);
     });
+
+    socket.on('send_Message', function(sendObject) {
+        console.log(sendObject.sendUser + ' 님이 ' + sendObject.requestUser + ' 님에게 메세지를 전송하였습니다.');
+        console.log(sendObject.sendMessage);
+        io.sockets.emit('request_Message', sendObject);
+    });
 });

@@ -99,6 +99,7 @@ var app = new Vue({
 
         sendChatting : function() {
             //채팅 전송
+            socket.emit('send_Message', {sendUser : this.userNickname, requestUser : this.reqestID ,sendMessage : this.userChatting});
             this.userChatting = null;
         },
 
@@ -158,6 +159,7 @@ var app = new Vue({
                     //div.setAttribute('v-on:click', 'testFunction');
                     div.addEventListener('click', app.testFunction);
                     let text = document.createTextNode(loginUsers[i]);
+                    div.setAttribute('style','font-family: IM_Hyemin-Regular;');
                     div.appendChild(text);
                     document.getElementById('userDiv').appendChild(div);
                 }
@@ -224,7 +226,26 @@ var app = new Vue({
                 // 요청 한 사람, 요청 받은 사람 둘 다 처리 해주기 위해 or 연산자를 사용해서 이벤트 처리
                 if(serverData.reqestUser === app.userNickname || serverData.myName === app.userNickname) {
                     app.chatting = true;
-                    app.reqestID = serverData.myName;
+                    //app.reqestID = serverData.myName;
+                    setTimeout(function(){
+                        if(app.requestChat) {
+                            var h1 = document.createElement('h1');
+                            var h1Text = document.createTextNode(serverData.reqestUser);
+                            app.reqestID = serverData.reqestUser;
+                            h1.appendChild(h1Text);
+                            h1.setAttribute('style','font-family: IM_Hyemin-Regular;');
+                            document.getElementById('chatUserNickname').append(h1);
+                        }
+                        else {
+                            var h1 = document.createElement('h1');
+                            var h1Text = document.createTextNode(serverData.myName);
+                            app.reqestID = serverData.myName;
+                            h1.appendChild(h1Text);
+                            h1.setAttribute('style','font-family: IM_Hyemin-Regular;');
+                            document.getElementById('chatUserNickname').append(h1);
+                        }
+                    },100);
+                   
                     //document.getElementById('chatUserNickname').innerHTML = serverData.myName;
                 }
             });
@@ -242,12 +263,31 @@ var app = new Vue({
 
             socket.on('endChatting', function(serverData) {
                 // 채팅이 끝났을 때 요청한 사람과 요청 받은 사람 둘 다 메인화면으로 이동해주고 팝업 제어하는 변수 초기화
-                if(serverData.reqestUser === app.userNickname || serverData.myName === app.reqestID) {
+                if(serverData.reqestUser === app.userNickname || serverData.reqestUser === app.reqestID) {
                     app.chatting = false;
                     app.userChatting = null;
                     app.requestChat = false;
                     // 화면 이동하면서 함수를 실행하면 읽어올 수가 없어서 setTimeout으로 약간의 딜레이를 줘서 화면 전환 후 새로고침
                     setTimeout(app.userUpdate ,100);
+                }
+            });
+
+            socket.on('request_Message', function(serverData) {
+                if(serverData.sendUser === app.userNickname || serverData.requestUser === app.userNickname) {
+                    console.log(serverData.requestUser + ' 님에게 '+ serverData.sendUser + '님이 메세지를 보냈습니다.');
+                    console.log(serverData.sendMessage);    
+                    
+                    let div = document.createElement('div');
+                    div.className = 'chatDiv';
+                    let text = document.createTextNode(serverData.sendUser);
+                    div.setAttribute('style','font-family: IM_Hyemin-Regular;');
+                    div.appendChild(text);
+                    var br = document.createElement('br');
+                    div.appendChild(br);
+                    let text1 = document.createTextNode(serverData.sendMessage);
+                    div.appendChild(text1);
+                    document.getElementById('Chatcontent').appendChild(div);
+
                 }
             });
 

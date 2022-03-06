@@ -54,7 +54,7 @@
                 <input v-on:click="goChattingPage" style="font-family: IM_Hyemin-Regular;" id = "testBtn" type="button" value="채팅">
             </center>
             <div id="mainSection">
-                <div id="userDiv" style="overflow: scroll;">
+                <div id="userDiv" style="overflow:auto;">
 
                     <!-- <loginuser v-for="user in logins"></loginuser> -->
                     
@@ -87,11 +87,13 @@
             
             <center id="chatTop">
                 <input v-on:click="goMainPage" style="font-family: IM_Hyemin-Regular;" id = "mainbackBtn" type="button" value="이전">
-                <h1 style="font-family: IM_Hyemin-Regular;" id="chatUserNickname"></h1>
+                <div style="font-family: IM_Hyemin-Regular;" id="chatUserNickname"></div>
             </center>
 
             <div id="chatSection">
+                <div id="Chatcontent" style="overflow: auto;">
 
+                </div>
             </div>
             <div id="chattingSection">
 

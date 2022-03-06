@@ -122,7 +122,7 @@
     width: 300px;
     height: 100px;
     margin-right: 50px;
-    margin-top: 30px;
+    margin-top: 10px;
 
 }
 
@@ -209,6 +209,7 @@
     background-color: #93c0f7;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
     /* 여기 수정하면 팝업창 크기가 바껴요*/
+
     width: 400px;
     height: 200px;
 
@@ -248,9 +249,33 @@
     height: 750px;
     margin-top: 50px;
     margin-left: 25px;
-    background-color: white;
+    background-color: #F2E0C9;
 }
 
+.chatDiv {
+  background-color: white;
+  width: 450px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 25px;
+  font-size: 30px;
+  border-radius: 10px;
+  
+}
+
+
+
+/* ----------------------------------------------------- */
+
+#Chatcontent {
+  width: 500px;
+  height: 720px;
+  margin-top: 20px;
+  margin-left: 25px;
+  display: flex;
+  /* flex-direction: column; */
+  background-color: gray;
+}
 
 
 
