@@ -263,6 +263,12 @@
   
 }
 
+.chatPos {
+  display: flex;
+  width: auto;
+  height: auto;
+}
+
 
 
 /* ----------------------------------------------------- */
@@ -272,7 +278,7 @@
   height: 720px;
   margin-top: 20px;
   margin-left: 25px;
-  display: flex;
+  
   /* flex-direction: column; */
   background-color: gray;
 }

@@ -277,6 +277,8 @@ var app = new Vue({
                     console.log(serverData.requestUser + ' 님에게 '+ serverData.sendUser + '님이 메세지를 보냈습니다.');
                     console.log(serverData.sendMessage);    
                     
+                    let div1 = document.createElement('div');
+                    div1.className = 'chatPos';
                     let div = document.createElement('div');
                     div.className = 'chatDiv';
                     let text = document.createTextNode(serverData.sendUser);
@@ -286,7 +288,8 @@ var app = new Vue({
                     div.appendChild(br);
                     let text1 = document.createTextNode(serverData.sendMessage);
                     div.appendChild(text1);
-                    document.getElementById('Chatcontent').appendChild(div);
+                    div1.appendChild(div);
+                    document.getElementById('Chatcontent').appendChild(div1);
 
                 }
             });
