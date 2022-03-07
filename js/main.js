@@ -129,6 +129,8 @@ var app = new Vue({
         // 메인 페이지에서 접속한 유저 클릭 시 팝업 출력
         testFunction : function(event) {
             // 아래 메서드에서 추가한 div를 클릭 했을 시 이벤트 처리 
+            console.log(event);
+            console.log(event.target);
             console.log(event.target.innerText);
             // 팝업 input을 제어하는 변수 조정
             this.requestChat = true;
