@@ -199,3 +199,16 @@ body {
     margin: 300px 100px;
     background: var(--shadow);
 }
+/* =====채팅 요청 팝업 */
+#ChatPopupDiv{
+    font-size: 10px;
+    text-align: center;
+    margin-top: 60px;
+}
+#ChatPopupDiv>input{
+    font-family: 'IM_Hyemin-Regular.otf';
+    font-size: 25px;
+    line-height: 1.5;
+    font-weight: 400;
+    
+}
