@@ -62,7 +62,7 @@ var app = new Vue({
                 app.addUserDiv();
             }, 100);
             //채팅그만하는
-            // socket.emit('userlogout',{logoutName:this.userName});
+            // socket.emit('userlogout',{logoutName:this.userName, 상대방 저장된 이름도 같이 app.responseName});
         },
         popupCloseBtn: function(){
             document.querySelector(".background").className = "background";
@@ -99,7 +99,7 @@ var app = new Vue({
             
             //채팅대기(닫기)버튼 true
             this.requestChat=true;
-
+            this.responseName = event.target.innerText;
             document.getElementById('ChatPopupDiv').removeChild(document.getElementById('ChatPopupDiv').firstChild);
             var h1 = document.createElement('h1');
             var h1_Divtext = document.createTextNode(event.target.innerText);
@@ -144,7 +144,7 @@ var app = new Vue({
                 console.log(app.loginsCount);
                 userInfo = serverData.userArray.filter(() => true);
                 console.log(userInfo);
-                if(!this.Title && !this.Chat){
+                if(!app.Title){
                     app.addUserDiv();  
                 }
                
@@ -155,7 +155,7 @@ var app = new Vue({
                 console.log(app.loginsCount);
                 userInfo = serverData.userArray.filter(() => true);
                 console.log(userInfo);
-                if(!this.Chat && !this.Title) {
+                if(!app.Title) {
                     app.addUserDiv();
                 }
             });
@@ -164,7 +164,8 @@ var app = new Vue({
                 if(serverData.responseName === app.userName){
 
                     //app에서 요청받은 애랑 서버에서 요청한애는 같지 
-                    app.responseName = serverData.responseName;
+                    app.responseName = serverData.requestName;
+                    console.log(app.responseName);
 
                     console.log('요청보내는사람 (나) : ' + serverData.requestName);
                     console.log('요청받는사람 : ' + serverData.responseName);
@@ -215,6 +216,7 @@ var app = new Vue({
                 //내가 요청을 보냈는지, 상대방도 요청을 받았는지 받았으면 
                 if(app.userName === serverData.requestName || app.userName===serverData.responseName){
                     document.querySelector(".background1").className = "background1";
+                    app.requestChat = false;
                 }
             });
             socket.on('CloseChatting',function (serverData) {
@@ -222,6 +224,7 @@ var app = new Vue({
                 console.log('servdat response : ' + serverData.responseName);
                 if(app.userName === serverData.requestName || app.userName===serverData.responseName){
                     document.querySelector(".background1").className = "background1";
+                    app.requestChat = false;
                 }
             }); 
 

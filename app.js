@@ -57,8 +57,9 @@ io.sockets.on('connection', function(socket) {
         io.sockets.emit('RefuseChatting',RefuseChat);
    });
    socket.on('CloseChat', function(CloseChat){
-       console.log('ㅇㅇㅇㅇ');
-        io.sockets.emit('CloseChatting',CloseChat);
+       console.log(CloseChat.requestName);
+       console.log(CloseChat.responseName);
+        io.sockets.emit('CloseChatting', CloseChat);
 });
 
 });
