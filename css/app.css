@@ -116,8 +116,13 @@ body {
     font-weight: 400;
 }
 /* ==== Chat page ==== */
-#Content{
-    display: flex;
+#whatthename{
+    text-align: center;
+    display: inline-block;
+    margin-right: 60px;
+}
+
+.Content{
     width: 580px;
     height: 790px;
     background: var(--yellow);
@@ -126,23 +131,32 @@ body {
     margin-top: 10px;
     margin-left: 10px;
 }
+#ChatContent{
+    width: 580px;
+    height: 100px;
+    border-radius: 25px;
+    position: absolute;
+    margin-top: 700px;
+}
 #userChatInput{
-    width: 480px;
+    width: 470px;
     outline: none;
-    /* justify-content: center; */
     border-radius: 25px;
     height: 50px;
     float: left;
     border: 2px solid var(--shadow);
     margin: 10px;
+    position:relative;
 }
-#userSend{
+#userSend{ 
     width: 70px;
     height: 55px;
     border-radius: 25px;
     float: right;
     border: 2px solid var(--shadow);
-    margin: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    position: relative;
 }
 /* ==== Popup page ==== */
 .background {
@@ -198,4 +212,17 @@ body {
     text-align: center;
     margin: 300px 100px;
     background: var(--shadow);
+}
+/* =====채팅 요청 팝업 */
+#ChatPopupDiv{
+    font-size: 10px;
+    text-align: center;
+    margin-top: 60px;
+}
+#ChatPopupDiv>input{
+    font-family: 'IM_Hyemin-Regular.otf';
+    font-size: 25px;
+    line-height: 1.5;
+    font-weight: 400;
+    
 }

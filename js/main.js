@@ -1,7 +1,7 @@
 
 var socket = io();
 
-//socket.emit('loginInfo',{userName:userName.userName, loginCount:userId.length, userIDArray:userId});
+//접속 유저 정보
 var userInfo = [];
 
 
@@ -9,13 +9,17 @@ var userInfo = [];
 var app = new Vue({
     el : "#TotalDiv",
     data : {
-        // 사용 할 변수들 
+        // 보내는사람(나)
         userName : null,
         Title : true,
         Chat : false,
         userChat : null,
         //app.loginCount=serverData.loginCount;
-        loginCount : 0
+        loginsCount : 0,
+        //채팅 요청 보내고 대기 시 닫기 버튼 v-if
+        requestChat : false,
+        // 받는사람
+        responseName : null
     },
     components : {
         //컴포넌트 추가
@@ -43,18 +47,22 @@ var app = new Vue({
             console.log("Main->Title 이전 버튼");
             this.Title=true;
             //타이틀화면 이동 시 userName값 emit 로그아웃한 유저 확인
-            socket.emit('userlogout',{userName:this.userName});
+            socket.emit('userlogout',{logoutName:this.userName});
             this.userName=null;
             
         },
-
         ChatBtn: function(){
             console.log("admin chat btn");
-            this.Chat=true;
+            // this.Chat=true;
         },
         MainBackBtn: function(){
             console.log("Chat->Main 이전 버튼");
             this.Chat=false;
+            setTimeout(function() {
+                app.addUserDiv();
+            }, 100);
+            //채팅그만하는
+            // socket.emit('userlogout',{logoutName:this.userName});
         },
         popupCloseBtn: function(){
             document.querySelector(".background").className = "background";
@@ -63,16 +71,16 @@ var app = new Vue({
         SendBtn: function(){
             console.log("메세지 전송 버튼");
         },
-        //MainPage에서 같은 서버에 접속한 severData 수 만큼 동적 div 생성 (appendChild)
+        //MainPage에서 같은 서버에 접속한 수 만큼 동적 div 생성 (appendChild)
         addUserDiv : function(){
-            //자식객체 초기화
-            if(this.Chat) {
+            // 채팅창으로 넘어가기 전에 자식객체 초기화
+            if(!this.Chat && !this.Title) {
                 var count = document.getElementById('MainContent').childElementCount;
                 for(var i = 0; i < count; i++) {
                     document.getElementById('MainContent').removeChild(document.getElementById('MainContent').firstChild);
                 }
             }       
-            for(var i=0; i<this.loginCount; i++){
+            for(var i=0; i<this.loginsCount; i++){
                 if(this.userName!==userInfo[i]){
                     let div = document.createElement('div');
                     div.className ='MainContent';
@@ -82,58 +90,142 @@ var app = new Vue({
                     //특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙입니다
                     document.getElementById('MainContent').appendChild(div);
                     div.addEventListener('click',app.MainContentClick);
-                    
                 }    
             }
         },
-        MainContentClick : function(){
-            console.log('채팅방 들어가기 clcik');
+        MainContentClick : function(event){
+            //채팅 요청 팝업창 띄우기
             document.querySelector(".background1").className = "background1 show";
-
-            document.getElementById('ChatPopup').removeChild(document.getElementById('ChatPopup').firstChild);
-            var h1 = document.createElement('h1');
-
-            var h1Text = document.createTextNode(event.target.innerText);
-            h1.appendChild(h1Text);
-            var h1Texts = document.createTextNode(' 님에게 채팅 요청 중');
-            h1.appendChild(h1Texts);
             
+            //채팅대기(닫기)버튼 true
+            this.requestChat=true;
+
+            document.getElementById('ChatPopupDiv').removeChild(document.getElementById('ChatPopupDiv').firstChild);
+            var h1 = document.createElement('h1');
+            var h1_Divtext = document.createTextNode(event.target.innerText);
+            h1.appendChild(h1_Divtext);
+            var h1_Text = document.createTextNode(' 님에게 채팅 요청을 보냈습니다.');
+            h1.appendChild(h1_Text);
+            document.getElementById('ChatPopupDiv').prepend(h1);   
+            
+            socket.emit('requestUser',{requestName:this.userName, responseName:event.target.innerText});
+            // document.getElementById('ChatPopup Div').appendChild(h1);            
+        },
+        
+        ChatAcceptBtn: function(){
+            console.log('채팅수락');
+            
+            socket.emit('AcceptChat',{requestName:this.userName, responseName:this.responseName});
+        },
+
+        ChatRefuseBtn: function(){
+            document.querySelector(".background1").className = "background1";
+            console.log('채팅거절');
+            console.log('requestName : ' + this.userName);
+            console.log('responseName '+ this.responseName);
+            socket.emit('RefuseChat',{requestName:this.userName, responseName:this.responseName});
 
         },
-        ChatRefuseCloseBtn: function(){
+        ChatCloseBtn: function(){
+            console.log('요청 대기 중');
             document.querySelector(".background1").className = "background1";
-            console.log('응 안해~');
-            // ChatAcceptBtn,ChatRefuseCloseBtn
-        },
-        ChatAcceptBtn: function(){
-            console.log('채팅해드림');
+            console.log('닫기');
+            socket.emit('CloseChat',{requestName:this.userName, responseName:this.responseName});
         }
     },
     
     created : function() {
-        // 소켓 연결 할 부분
+        // 소켓 연결
         socket.on('connect', function(){
-            console.log('소켓 연결');
-            //로그인 
+            console.log('소켓 연결');  
+            //로그인 유저 정보
             socket.on('loginInfo', function(serverData){
-                console.log(serverData);
-                app.loginCount=serverData.loginCount; 
-                // app.js => userIDArray:userId[]; === main.js => userInfo[];
+                app.loginsCount=serverData.loginCount; 
+                console.log(app.loginsCount);
                 userInfo = serverData.userArray.filter(() => true);
                 console.log(userInfo);
-                // settimeout값 주기
-                app.addUserDiv();
-               
+                if(!this.Title && !this.Chat){
+                    app.addUserDiv();  
+                }
                
             });
-            //로그아웃 
-            socket.on('loginoutInfo', function(serverData){
-                console.log(serverData);
+            //로그아웃 유저 정보
+            socket.on('logoutInfo', function(serverData){
+                app.loginsCount=serverData.logoutCount; 
+                console.log(app.loginsCount);
                 userInfo = serverData.userArray.filter(() => true);
-                app.addUserDiv();
-                
+                console.log(userInfo);
+                if(!this.Chat && !this.Title) {
+                    app.addUserDiv();
+                }
+            });
+            //채팅요청 받은 사람에게도 ㅇㅇ님이 요청하였습니다. 를 뿌려줘야 
+            socket.on('responseUser', function(serverData){            
+                if(serverData.responseName === app.userName){
+
+                    //app에서 요청받은 애랑 서버에서 요청한애는 같지 
+                    app.responseName = serverData.responseName;
+
+                    console.log('요청보내는사람 (나) : ' + serverData.requestName);
+                    console.log('요청받는사람 : ' + serverData.responseName);
+                    document.querySelector(".background1").className = "background1 show";
+
+                    document.getElementById('ChatPopupDiv').removeChild(document.getElementById('ChatPopupDiv').firstChild);
+                    var h1 = document.createElement('h1');
+                    var h1_Divtext = document.createTextNode(serverData.requestName);
+                    h1.appendChild(h1_Divtext);
+                    var h1_Text = document.createTextNode(' 님에게 채팅 요청이 왔습니다.');
+                    h1.appendChild(h1_Text);
+                    document.getElementById('ChatPopupDiv').prepend(h1); 
+                }
             });
             
+            socket.on('AcceptChatting', function(serverData){
+                //app.requestChat은 닫기 == 요청보낸애
+                console.log('요청보낸애 ' + serverData.requestName);
+                console.log('요청한애 ' + serverData.responseName);
+                console.log(app.userName);
+                app.Chat=true;
+                    setTimeout(function(){
+                        if(app.requestChat) {
+                            //닫기요청
+                            console.log(serverData);
+                            var h1 = document.createElement('h1');
+                            var h1_Text = document.createTextNode(serverData.responseName);
+                            app.responseName = serverData.responseName;
+                            h1.appendChild(h1_Text);
+                            document.getElementById('whatthename').append(h1);
+                        }
+                        else {
+                            console.log('받는사람'+serverData.responseName);
+                            console.log('보내는'+serverData.requestName);
+                            
+                            console.log(serverData);
+
+                            var h1 = document.createElement('h1');
+                            var h1_Text = document.createTextNode(serverData.requestName);
+                            app.responseName = serverData.requestName;
+                            h1.appendChild(h1_Text);
+                            document.getElementById('whatthename').append(h1);
+                        }
+                    }, 100);
+            });
+            socket.on('RefuseChatting',function (serverData) {
+                //이벤트보낸사람시점으로 
+                //내가 요청을 보냈는지, 상대방도 요청을 받았는지 받았으면 
+                if(app.userName === serverData.requestName || app.userName===serverData.responseName){
+                    document.querySelector(".background1").className = "background1";
+                }
+            });
+            socket.on('CloseChatting',function (serverData) {
+                console.log('serverdata request : ' + serverData.requestName);
+                console.log('servdat response : ' + serverData.responseName);
+                if(app.userName === serverData.requestName || app.userName===serverData.responseName){
+                    document.querySelector(".background1").className = "background1";
+                }
+            }); 
+
+
         });
 
     }

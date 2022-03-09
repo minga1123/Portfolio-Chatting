@@ -38,7 +38,7 @@
                 <!-- 새로고침 버튼으로 변경하기 -->
                 <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn">
             </div>
-            <div id="Content" style="overflow-y: scroll">
+            <div class="Content" style="overflow:auto;">
                 <div id="MainContent">
                     
                 </div>
@@ -47,9 +47,11 @@
             <div class="background1">
                 <div class="background-popup1">
                     <div class="background-popupview">
-                        <div id="ChatPopup">
-                            <input type="button" value="수락" @click="ChatAcceptBtn">
-                            <input type="button" value="거절" @click="ChatRefuseCloseBtn">
+                        <div id="ChatPopupDiv">
+                            <h1>removeChild</h1>
+                            <input v-if="!requestChat" type="button" value="수락" @click="ChatAcceptBtn">
+                            <input v-if="!requestChat" type="button" value="거절" @click="ChatRefuseBtn">
+                            <input v-if="requestChat" type="button" value="닫기" @click="ChatCloseBtn">
                         </div>
                     </div>
                 </div>
@@ -59,13 +61,16 @@
         <!-- 채팅 화면 -->
         <div class="divSetting" id="ChatPage" v-if="Chat">
             <div id="header">
-                <input id="BackInput"type="button" value="이전" v-on:click="MainBackBtn">
-                <h1>{{userName}}</h1>
-                <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn">
+                <input id="BackInput" type="button" value="이전" v-on:click="MainBackBtn">
+                <div id="whatthename"></div>
+                <!-- <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn"> -->
             </div>
-            <div class="Content">
-                <input id="userChatInput" type="text" v-model="userChat">
-                <input id="userSend" type="button" value="전송" @click="SendBtn">
+            <div class="Content" style="overflow: auto; background:var(--shadow);" >  
+                <div id="ChatContent">
+                    <input id="userChatInput" type="text" v-model="userChat">
+                    <input id="userSend" type="button" value="전송" @click="SendBtn">   
+                </div>
+                    
             </div>
         </div>
         
