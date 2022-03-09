@@ -61,7 +61,8 @@ var app = new Vue({
             setTimeout(function() {
                 app.addUserDiv();
             }, 100);
-            //채팅그만하는
+            socket.emit('Mainback',{closeuser:app.responseName});
+
             // socket.emit('userlogout',{logoutName:this.userName, 상대방 저장된 이름도 같이 app.responseName});
         },
         popupCloseBtn: function(){
@@ -70,6 +71,7 @@ var app = new Vue({
         
         SendBtn: function(){
             console.log("메세지 전송 버튼");
+            // socket.emit('userChat');adsfadfcaknahdckahk
         },
         //MainPage에서 같은 서버에 접속한 수 만큼 동적 div 생성 (appendChild)
         addUserDiv : function(){
@@ -227,6 +229,16 @@ var app = new Vue({
                     app.requestChat = false;
                 }
             }); 
+            // io.sockets.emit('GoMain', Mainback);
+            socket.on('GoMain', function(serverData){
+                if(app.userName===serverData.closeuser){
+                    app.Chat=false;
+                    setTimeout(function() {
+                        app.addUserDiv();
+                    }, 100);
+                    app.requestChat=false;
+                }
+            });
 
 
         });
