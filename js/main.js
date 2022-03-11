@@ -71,7 +71,11 @@ var app = new Vue({
         
         SendBtn: function(){
             console.log("메세지 전송 버튼");
-            // socket.emit('userChat');adsfadfcaknahdckahk
+            if(this.userChat == null) {
+                return;
+            }
+            socket.emit('sendChat',{userName:this.userName,responseName:this.responseName,Chatmsg:this.userChat});
+            this.userChat=null;
         },
         //MainPage에서 같은 서버에 접속한 수 만큼 동적 div 생성 (appendChild)
         addUserDiv : function(){
@@ -101,6 +105,7 @@ var app = new Vue({
             
             //채팅대기(닫기)버튼 true
             this.requestChat=true;
+            
             this.responseName = event.target.innerText;
             document.getElementById('ChatPopupDiv').removeChild(document.getElementById('ChatPopupDiv').firstChild);
             var h1 = document.createElement('h1');
@@ -161,7 +166,7 @@ var app = new Vue({
                     app.addUserDiv();
                 }
             });
-            //채팅요청 받은 사람에게도 ㅇㅇ님이 요청하였습니다. 를 뿌려줘야 
+            //요청 받은 사람에게 요청팝업 
             socket.on('responseUser', function(serverData){            
                 if(serverData.responseName === app.userName){
 
@@ -236,9 +241,35 @@ var app = new Vue({
                     setTimeout(function() {
                         app.addUserDiv();
                     }, 100);
-                    app.requestChat=false;
+                    
                 }
+                app.requestChat=false;
             });
+            socket.on('sendChatting',function(serverData){
+                console.log(serverData.userName  + '가 '+ serverData.responseName + ' 한테 ->' + serverData.Chatmsg);
+                
+                const div = document.createElement('div');
+                if(serverData.userName === app.userName){
+                    div.className = 'chatR';
+                }else{
+                        div.className = 'chatL';
+                }
+                const div1 = document.createElement('div');
+                div1.className='ChatDiv';
+                div.appendChild(div1);
+                const Chattext = document.createTextNode(serverData.Chatmsg);
+                div1.appendChild(Chattext);
+                document.getElementById('ChatContent').appendChild(div);
+                
+                const today = new Date();
+                const hours = today.getHours(); 
+                const minutes = today.getMinutes(); 
+                const p = document.createElement('p');
+                const time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
+                p.appendChild(time);
+                div.appendChild(p);
+            });
+                    
 
 
         });

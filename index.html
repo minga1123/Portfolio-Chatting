@@ -65,8 +65,11 @@
                 <div id="whatthename"></div>
                 <!-- <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn"> -->
             </div>
-            <div class="Content" style="overflow: auto; background:var(--shadow);" >  
-                <div id="ChatContent">
+            <div class="Content" style= "background-color: #DDDED9;" >  
+                <div id="ChatContent" style="overflow: auto;">
+                    
+                </div>
+                <div id="ChatFooter">
                     <input id="userChatInput" type="text" v-model="userChat">
                     <input id="userSend" type="button" value="전송" @click="SendBtn">   
                 </div>

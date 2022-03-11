@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 app.get('/login', function (req, res) {
     res.sendfile(__dirname + '/index.html');
 }); 
-server.listen(700, () => {
+server.listen(100, () => {
     console.log("server open 3000");
 }); 
 
@@ -64,6 +64,10 @@ io.sockets.on('connection', function(socket) {
 // socket.emit('Mainback',{closeuser:app.responseName});
     socket.on('Mainback', function(Mainback){
         io.sockets.emit('GoMain', Mainback);
+    });
+    socket.on('sendChat', function(sendChat){
+        // console.log('userName : '+sendChat.userName + ' responseName : '+sendChat.responseName + ' Chatmsg : '+sendChat.Chatmsg);
+        io.sockets.emit('sendChatting',sendChat);
     });
             
 
