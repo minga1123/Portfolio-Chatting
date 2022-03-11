@@ -104,7 +104,6 @@ var app = new Vue({
             }
             socket.emit('send_Message', {sendUser : this.userNickname, requestUser : this.reqestID ,sendMessage : this.userChatting});
             this.userChatting = null;
-$
             
         },
 
