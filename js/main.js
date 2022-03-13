@@ -90,10 +90,10 @@ var app = new Vue({
             }       
             for(var i=0; i<this.loginsCount; i++){
                 if(this.userName!==userInfo[i]){
-                    let div = document.createElement('div');
+                    var div = document.createElement('div');
                     div.className ='MainContent';
                     
-                    let text = document.createTextNode(userInfo[i]);
+                    var text = document.createTextNode(userInfo[i]);
                     div.appendChild(text);
                     //특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙입니다
                     document.getElementById('MainContent').appendChild(div);
@@ -105,16 +105,15 @@ var app = new Vue({
             //채팅 요청 팝업창 띄우기
             document.querySelector(".background1").className = "background1 show";
             
-            
             //채팅대기(닫기)버튼 true
             this.requestChat=true;
             
             this.responseName = event.target.innerText;
             document.getElementById('ChatPopupDiv').removeChild(document.getElementById('ChatPopupDiv').firstChild);
-            let h1 = document.createElement('h1');
-            let h1_Divtext = document.createTextNode(event.target.innerText);
+            var h1 = document.createElement('h1');
+            var h1_Divtext = document.createTextNode(event.target.innerText);
             h1.appendChild(h1_Divtext);
-            let h1_Text = document.createTextNode(' 님에게 채팅 요청을 보냈습니다.');
+            var h1_Text = document.createTextNode(' 님에게 채팅 요청을 보냈습니다.');
             h1.appendChild(h1_Text);
             document.getElementById('ChatPopupDiv').prepend(h1);   
             
@@ -210,7 +209,6 @@ var app = new Vue({
                         else {
                             console.log('받는사람'+serverData.responseName);
                             console.log('보내는'+serverData.requestName);
-                            
                             console.log(serverData);
 
                             var h1 = document.createElement('h1');
@@ -251,29 +249,28 @@ var app = new Vue({
                 if(app.userName==serverData.userName || app.userName===serverData.responseName){
                     console.log(serverData.userName  + '가 '+ serverData.responseName + ' 한테 ->' + serverData.Chatmsg);
                     
-                    var div = document.createElement('div');
+                    var divv = document.createElement('div');
                     if(serverData.userName === app.userName){
-                        div.className = 'chatR';
+                        divv.className = 'chatR';
                     }else{
-                            div.className = 'chatL';
+                        divv.className = 'chatL';
                     }
-                    let div1 = document.createElement('div');
+                    var div1 = document.createElement('div');
                     div1.className='ChatDiv';
-                    div.appendChild(div1);
-                    let Chattext = document.createTextNode(serverData.Chatmsg);
+                    divv.appendChild(div1);
+                    var Chattext = document.createTextNode(serverData.Chatmsg);
                     div1.appendChild(Chattext);
-                    document.getElementById('ChatContent').appendChild(div);
+                    document.getElementById('ChatContent').appendChild(divv);
                     
-                    let today = new Date();
-                    let hours = today.getHours(); 
-                    let minutes = today.getMinutes(); 
-                    let p = document.createElement('p');
-                    let time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
+                    var today = new Date();
+                    var hours = today.getHours(); 
+                    var minutes = today.getMinutes(); 
+                    var p = document.createElement('p');
+                    var time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
                     p.appendChild(time);
-                    div.appendChild(p);
+                    divv.appendChild(p);
                     document.getElementById('ChatContent').scrollTop = document.getElementById('ChatContent').scrollHeight;
                 }
-                
             });
                     
 

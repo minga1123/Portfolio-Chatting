@@ -133,6 +133,14 @@ body {
     margin-top: 10px;
     margin-left: 10px;
 }
+.Contentt{
+    width: 580px;
+    height: 790px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 #ChatContent{
     width: 580px;
     position: absolute;
