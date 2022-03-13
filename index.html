@@ -71,10 +71,14 @@
                         <div id="testDiv">
                             <h1>test</h1>
                         </div>
-                            <input v-if="!requestChat" v-on:click="successChat" type="button" value="수락">
-                            <input v-if="!requestChat" v-on:click="closepopup1" type="button" value="거절">
-                            <input v-if="requestChat" v-on:click="failChat" type="button" value="닫기">
+                      
+                            
                       </center>
+                         <div id="btndiv">
+                            <input v-if="!requestChat" style="font-family: IM_Hyemin-Regular;" v-on:click="successChat" type="button" value="수락">
+                            <input v-if="!requestChat" style="font-family: IM_Hyemin-Regular;" v-on:click="closepopup1" type="button" value="거절">
+                            <input v-if="requestChat" style="font-family: IM_Hyemin-Regular;" v-on:click="failChat" type="button" value="닫기">
+                        </div>
                     </div>
                   </div>
                 </div>

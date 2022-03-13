@@ -135,7 +135,7 @@ var app = new Vue({
             this.requestChat = true;
             // 팝업 출력
             document.querySelector(".background1").className = "background1 show1";
-
+            //document.getElementById('popup1').setAttribute('style','opacity: 100%;');
             document.getElementById('testDiv').removeChild(document.getElementById('testDiv').firstChild);
             var h1 = document.createElement('h1');
             var h1Text = document.createTextNode(event.target.innerText);
@@ -311,6 +311,7 @@ var app = new Vue({
                     // var br = document.createElement('br');
                     // div.appendChild(br);
                     let text1 = document.createTextNode(serverData.sendMessage);
+                    
                     div.appendChild(text1);
                     div1.appendChild(div);
                     var p = document.createElement('p');

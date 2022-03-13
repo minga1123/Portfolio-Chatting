@@ -259,7 +259,7 @@
   height: auto;
   margin-top: 10px;
   margin-left: 25px;
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 10px;
   padding: 10px;
 }
@@ -279,11 +279,13 @@
 .chatPos {
   display: flex;
   width: 460px;
+  /* font-size: 25px; */
   flex-direction: row-reverse;
 }
 
 .chatPos1 {
   display: flex;
+  /* font-size: 25px; */
   width: 460px;
 }
 
@@ -343,13 +345,55 @@
     margin: auto;
     border-radius: 15px;
     /* background-color: #ffffff; */
-    background-color: #93c0f7;
+    background-color: white;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
     /* 여기 수정하면 팝업창 크기가 바껴요*/
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 200px;
+    font-size: 10px;
+    /* opacity: 5%;
+    transition-property: opacity;
+    transition-duration: 2s; */
 
+    /* animation-name: model;
+    animation-iteration-count: 1;
+    animation-duration: 1s; */
+    
   }
+
+  #btndiv {
+      float: right;
+      margin-top: 30px;
+      margin-right: 10px;
+      
+  }
+  #btndiv input {
+      font-size: 20px;
+      border : 1px solid white;
+      background-color: white;
+      border-radius: 5px;
+      padding: 2px;
+      margin-right: 5px;
+      
+  }
+  #btndiv input:hover {
+      background-color: #93c0f7;
+  }
+
+  /* @keyframes model {
+      from {
+        bottom: -10%;
+        left: 50%;
+        opacity: 5%;
+      }
+
+      to {
+        bottom: 20%;
+        left: 50%;
+        opacity: 100%;
+      }
+  } */
+
   .pupupview1 {
     position: absolute;
     width: 400px;
@@ -358,6 +402,7 @@
     transform: translate(-50%, -50%);
     text-align: center;
     margin: auto;
+    margin-top: 20px;
   }
 
   .show1 .popup1 {
@@ -366,7 +411,8 @@
   }
 
   #testDiv {
-    font-size: 15px;
+    margin-top: 10px;
+    font-size: 10px;
   }
 
 
