@@ -41,14 +41,24 @@ body {
 #TitlePage>input{
     font-family: 'IM_Hyemin-Regular.otf';
     font-size: 25px;
-    line-height: 1.5;
-    font-weight: 400;
-    width: 80%;
+    display: block;
     height: 50px;
     margin-top: 30px;
+    /* margin-left: 45px; */
     text-align: center;
     border: 2px solid var(--shadow);
-    border-radius: 15px;   
+    border-radius: 15px;
+}
+#JoinInput{
+    width: 430px;
+    margin-left: 85px;
+}
+#JoinBtn{
+    width: 200px;
+    margin-left: 200px;
+}
+#JoinBtn :hover{
+    background: var(--bg);
 }
 #TitlePage>input:focus{
     outline: none;
@@ -212,7 +222,7 @@ p{
     z-index: -1;
     opacity: 0;
 }
-.show{
+.backgroundshow{
     top: -11px;
     left: -11px;
     margin-top: 10px;
@@ -226,14 +236,20 @@ p{
 .background-popup{
     position: absolute;
     width: 400px;
-    height: 250pc;
+    height: 200px;
     border-radius: 15px;
     text-align: center;
     margin: 300px 100px;
     background: white;
-
-    
-
+}
+.background-popup input{
+    font-size: 20px;
+    font-family: 'IM_Hyemin-Regular.otf';
+    margin-top: 10px;
+    background-color: white;
+}
+.background-popup input:hover{
+    background: var(--bg);
 }
 .background1 {
     width: 600px;
@@ -261,6 +277,7 @@ p{
     text-align: center;
     margin: 300px 100px;
     background: white;
+    
 }
 /* =====채팅 요청 팝업 */
 #ChatPopupDiv{

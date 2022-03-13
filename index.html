@@ -17,8 +17,8 @@
         <!-- 로그인 페이지 -->
         <div class="divSetting" id="TitlePage" v-if="Title">
             <img src="TitleIcon.png" id="TitleIcon">
-            <input type="text" placeholder="닉네임을 입력하세요!" v-model="userName" autocomplete="off" >
-            <input type="button" value="입장하기" v-on:click="JoinBtn" autocomplete="off">
+            <input id="JoinInput"type="text" placeholder="닉네임을 입력하세요!" v-model="userName" autocomplete="off" >
+            <input id="JoinBtn" type="button" value="입장하기" v-on:click="JoinBtn" autocomplete="off">
             <!-- 팝업생성 -->
             <div class="background">
                 <div class="background-popup">
