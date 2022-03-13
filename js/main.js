@@ -41,7 +41,6 @@ var app = new Vue({
                 this.userName=null;
                 
             }
-
         },
         TitleBackBtn: function(){
             console.log("Main->Title 이전 버튼");
@@ -53,7 +52,10 @@ var app = new Vue({
         },
         ChatBtn: function(){
             console.log("admin chat btn");
-            // this.Chat=true;
+            setTimeout(function() {
+                console.log('app.addUserDiv():');
+                app.addUserDiv();
+            }, 100);
         },
         MainBackBtn: function(){
             console.log("Chat->Main 이전 버튼");
@@ -103,15 +105,16 @@ var app = new Vue({
             //채팅 요청 팝업창 띄우기
             document.querySelector(".background1").className = "background1 show";
             
+            
             //채팅대기(닫기)버튼 true
             this.requestChat=true;
             
             this.responseName = event.target.innerText;
             document.getElementById('ChatPopupDiv').removeChild(document.getElementById('ChatPopupDiv').firstChild);
-            var h1 = document.createElement('h1');
-            var h1_Divtext = document.createTextNode(event.target.innerText);
+            let h1 = document.createElement('h1');
+            let h1_Divtext = document.createTextNode(event.target.innerText);
             h1.appendChild(h1_Divtext);
-            var h1_Text = document.createTextNode(' 님에게 채팅 요청을 보냈습니다.');
+            let h1_Text = document.createTextNode(' 님에게 채팅 요청을 보냈습니다.');
             h1.appendChild(h1_Text);
             document.getElementById('ChatPopupDiv').prepend(h1);   
             
@@ -245,27 +248,28 @@ var app = new Vue({
                 }
                 app.requestChat=false;
             });
+
             socket.on('sendChatting',function(serverData){
                 console.log(serverData.userName  + '가 '+ serverData.responseName + ' 한테 ->' + serverData.Chatmsg);
                 
-                const div = document.createElement('div');
+                let div = document.createElement('div');
                 if(serverData.userName === app.userName){
                     div.className = 'chatR';
                 }else{
                         div.className = 'chatL';
                 }
-                const div1 = document.createElement('div');
+                let div1 = document.createElement('div');
                 div1.className='ChatDiv';
                 div.appendChild(div1);
-                const Chattext = document.createTextNode(serverData.Chatmsg);
+                let Chattext = document.createTextNode(serverData.Chatmsg);
                 div1.appendChild(Chattext);
                 document.getElementById('ChatContent').appendChild(div);
                 
-                const today = new Date();
-                const hours = today.getHours(); 
-                const minutes = today.getMinutes(); 
-                const p = document.createElement('p');
-                const time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
+                let today = new Date();
+                let hours = today.getHours(); 
+                let minutes = today.getMinutes(); 
+                let p = document.createElement('p');
+                let time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
                 p.appendChild(time);
                 div.appendChild(p);
             });

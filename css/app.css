@@ -218,11 +218,14 @@ p{
 .background-popup{
     position: absolute;
     width: 400px;
-    height: 200px;
+    height: 250pc;
     border-radius: 15px;
     text-align: center;
     margin: 300px 100px;
-    background: var(--shadow);
+    background: white;
+
+    
+
 }
 .background1 {
     width: 600px;
@@ -249,7 +252,7 @@ p{
     border-radius: 15px;
     text-align: center;
     margin: 300px 100px;
-    background: var(--shadow);
+    background: white;
 }
 /* =====채팅 요청 팝업 */
 #ChatPopupDiv{
@@ -259,9 +262,9 @@ p{
 }
 #ChatPopupDiv>input{
     font-family: 'IM_Hyemin-Regular.otf';
-    font-size: 25px;
+    font-size: 20px;
     line-height: 1.5;
     font-weight: 400;
-    
+    margin-top: 15px;    
 }
 /*=====Chat Page=====*/

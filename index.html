@@ -17,8 +17,8 @@
         <!-- 로그인 페이지 -->
         <div class="divSetting" id="TitlePage" v-if="Title">
             <img src="TitleIcon.png" id="TitleIcon">
-            <input type="text" placeholder="닉네임을 입력하세요!" v-model="userName">
-            <input type="button" value="입장하기" v-on:click="JoinBtn">
+            <input type="text" placeholder="닉네임을 입력하세요!" v-model="userName" autocomplete="off" >
+            <input type="button" value="입장하기" v-on:click="JoinBtn" autocomplete="off">
             <!-- 팝업생성 -->
             <div class="background">
                 <div class="background-popup">
@@ -36,7 +36,7 @@
                 <input id="BackInput" type="button" value="이전" v-on:click="TitleBackBtn">
                 <h1>{{userName}}</h1>
                 <!-- 새로고침 버튼으로 변경하기 -->
-                <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn">
+                <input id="ForthInput" type="button" value="새로" v-on:click="ChatBtn">
             </div>
             <div class="Content" style="overflow:auto;">
                 <div id="MainContent">
