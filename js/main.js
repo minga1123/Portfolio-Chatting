@@ -268,6 +268,7 @@ var app = new Vue({
                 const time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
                 p.appendChild(time);
                 div.appendChild(p);
+                document.getElementById('ChatContent').scrollTop = document.getElementById('ChatContent').scrollHeight;
             });
                     
 
