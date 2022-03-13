@@ -244,35 +244,36 @@ var app = new Vue({
                     setTimeout(function() {
                         app.addUserDiv();
                     }, 100);
-                    
                 }
                 app.requestChat=false;
             });
-
             socket.on('sendChatting',function(serverData){
-                console.log(serverData.userName  + '가 '+ serverData.responseName + ' 한테 ->' + serverData.Chatmsg);
-                
-                let div = document.createElement('div');
-                if(serverData.userName === app.userName){
-                    div.className = 'chatR';
-                }else{
-                        div.className = 'chatL';
+                if(app.userName==serverData.userName || app.userName===serverData.responseName){
+                    console.log(serverData.userName  + '가 '+ serverData.responseName + ' 한테 ->' + serverData.Chatmsg);
+                    
+                    var div = document.createElement('div');
+                    if(serverData.userName === app.userName){
+                        div.className = 'chatR';
+                    }else{
+                            div.className = 'chatL';
+                    }
+                    let div1 = document.createElement('div');
+                    div1.className='ChatDiv';
+                    div.appendChild(div1);
+                    let Chattext = document.createTextNode(serverData.Chatmsg);
+                    div1.appendChild(Chattext);
+                    document.getElementById('ChatContent').appendChild(div);
+                    
+                    let today = new Date();
+                    let hours = today.getHours(); 
+                    let minutes = today.getMinutes(); 
+                    let p = document.createElement('p');
+                    let time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
+                    p.appendChild(time);
+                    div.appendChild(p);
+                    document.getElementById('ChatContent').scrollTop = document.getElementById('ChatContent').scrollHeight;
                 }
-                let div1 = document.createElement('div');
-                div1.className='ChatDiv';
-                div.appendChild(div1);
-                let Chattext = document.createTextNode(serverData.Chatmsg);
-                div1.appendChild(Chattext);
-                document.getElementById('ChatContent').appendChild(div);
                 
-                let today = new Date();
-                let hours = today.getHours(); 
-                let minutes = today.getMinutes(); 
-                let p = document.createElement('p');
-                let time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
-                p.appendChild(time);
-                div.appendChild(p);
-                document.getElementById('ChatContent').scrollTop = document.getElementById('ChatContent').scrollHeight;
             });
                     
 
