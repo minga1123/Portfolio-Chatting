@@ -159,19 +159,17 @@ body {
     
 }
 .chatR {
-    display: flex;
+    
     width: 560px;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
 }
 .chatL {
-    display: flex;
+    
     width: 560px;
 }
-p{
-    margin-top: 10px;
-}
+
 .ChatDiv{
-    /* display: flex; */
+   /* display: flex; */
     height: auto;
     width: auto;
     background-color: white;
