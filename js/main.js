@@ -260,7 +260,7 @@ var app = new Vue({
                     divv.appendChild(div1);
                     var Chattext = document.createTextNode(serverData.Chatmsg);
                     div1.appendChild(Chattext);
-                    document.getElementById('ChatContent').appendChild(divv);
+                    document.getElementById('Contentt').appendChild(divv);
                     
                     var today = new Date();
                     var hours = today.getHours(); 
@@ -269,7 +269,7 @@ var app = new Vue({
                     var time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
                     p.appendChild(time);
                     divv.appendChild(p);
-                    document.getElementById('ChatContent').scrollTop = document.getElementById('ChatContent').scrollHeight;
+                    document.getElementById('Contentt').scrollTop = document.getElementById('Contentt').scrollHeight;
                 }
             });
                     
