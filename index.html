@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <link href="app.css" rel="stylesheet"/>
-    <title>Chatting</title>
+    <title>Portfolio-Chat</title>
     <style>
         
     </style>
@@ -65,16 +65,20 @@
                 <div id="whatthename"></div>
                 <!-- <input id="ForthInput" type="button" value="채팅" v-on:click="ChatBtn"> -->
             </div>
-            <div class="Contentt" style= "background-color: #DDDED9;" >  
-                <div id="ChatContent" style="overflow: auto;">
-                    
+            
+            <div class="ChatContent" style= "background-color: #DDDED9;"> 
+                <!-- 채팅 스크롤 부분 -->
+                <div id="ChatScroll" style="overflow: auto;">
+                    <!-- box안에 말풍선 부분 -->
+                    <div id="ChatBox">
+                    </div>
                 </div>
                 <div id="ChatFooter">
                     <input id="userChatInput" type="text" v-model="userChat" autocomplete="off">
                     <input id="userSend" type="button" value="전송" @click="SendBtn">   
-                </div>
-                    
+                </div>    
             </div>
+            
         </div>
         
     </div>

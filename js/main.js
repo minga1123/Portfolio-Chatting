@@ -248,28 +248,31 @@ var app = new Vue({
             socket.on('sendChatting',function(serverData){
                 if(app.userName==serverData.userName || app.userName===serverData.responseName){
                     console.log(serverData.userName  + '가 '+ serverData.responseName + ' 한테 ->' + serverData.Chatmsg);
-                    
-                    var divv = document.createElement('div');
+                    //말풍선
+                    var ChatMsg = document.createElement('div');
+                    ChatMsg.className='ChatMsg';
+                    //위치조절ChatRL
+                    var ChatPos = document.createElement('div');
                     if(serverData.userName === app.userName){
-                        divv.className = 'chatR';
+                        ChatPos.className = 'posR';
                     }else{
-                        divv.className = 'chatL';
+                        ChatPos.className = 'posL';
                     }
-                    var div1 = document.createElement('div');
-                    div1.className='ChatDiv';
-                    divv.appendChild(div1);
+                    ChatPos.appendChild(ChatMsg);
+
                     var Chattext = document.createTextNode(serverData.Chatmsg);
-                    div1.appendChild(Chattext);
-                    document.getElementById('Contentt').appendChild(divv);
-                    
+                    ChatMsg.appendChild(Chattext);
                     var today = new Date();
                     var hours = today.getHours(); 
                     var minutes = today.getMinutes(); 
                     var p = document.createElement('p');
-                    var time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
+                    // var time = document.createTextNode('\u00A0' + hours + ':' + minutes + '\u00A0');
+                    var time = document.createTextNode(hours + ':' + minutes );
                     p.appendChild(time);
-                    divv.appendChild(p);
-                    document.getElementById('Contentt').scrollTop = document.getElementById('Contentt').scrollHeight;
+                    ChatPos.appendChild(p);
+                    document.getElementById('ChatBox').appendChild(ChatPos);
+
+                    document.getElementById('ChatScroll').scrollTop = document.getElementById('ChatScroll').scrollHeight;
                 }
             });
                     

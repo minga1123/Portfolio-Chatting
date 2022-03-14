@@ -143,7 +143,8 @@ body {
     margin-top: 10px;
     margin-left: 10px;
 }
-.Contentt{
+/* ==== Chat page ==== */
+.ChatContent{
     width: 580px;
     height: 790px;
     border-radius: 25px;
@@ -151,25 +152,18 @@ body {
     margin-top: 10px;
     margin-left: 10px;
 }
-#ChatContent{
+
+#ChatScroll{
     width: 580px;
     position: absolute;
     margin-top: 10px;
     height: 690px;
-    
-}
-.chatR {
-    
-    width: 560px;
-    /* flex-direction: row-reverse; */
-}
-.chatL {
-    
-    width: 560px;
-}
+    /* background-color: black; */
+     
+ }
 
-.ChatDiv{
-   /* display: flex; */
+.ChatMsg{
+    display: flex;
     height: auto;
     width: auto;
     background-color: white;
@@ -180,13 +174,30 @@ body {
     border-radius: 10px;
     padding: 10px;
 }
-.ChatText{
-    background-color: white;
+.posR {
+    flex-direction: row-reverse;
+    display: flex;
+    width: 560px;
+    flex-direction: row-reverse;
 }
+.posL {
+    display: flex;
+    /* font-size: 25px; */
+    width: 460px;
+}
+
+.ChatText{
+    background-color:black;
+}
+p{
+    margin-left: 17px;
+}
+
 #ChatFooter{
     width: 580px;
-    margin-top: 700px;
     position: absolute;
+    top: 800px;
+    left: 10px;
 }
 #userChatInput{
     font-family: 'IM_Hyemin-Regular.otf';
