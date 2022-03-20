@@ -14,3 +14,11 @@ server.listen(3000, () => {
     console.log(`server open 3000`);
     // 추가 
 });
+
+io.on("connection", (socket) => {
+  // client로부터의 메시지가 수신되면
+  socket.on("test", function(data){
+      console.log('왔음');
+  });
+
+});
