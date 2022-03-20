@@ -5,6 +5,7 @@
     <b-button variant="danger">Button</b-button>
     <b-button variant="success">Button</b-button>
     <b-button variant="outline-primary">Button</b-button>
+    {{test}}
   </div>
 </template>
 
@@ -13,6 +14,11 @@ export default {
   name: 'Titlepage',
   props: {
       
+  },
+  data() {
+    return {
+      test : '최민주'
+    }
   }
 }
 </script>
