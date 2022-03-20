@@ -1,6 +1,7 @@
 <template>
   <div class="Chatpage">
     <h1>Chatpage</h1>
+    <p>{{test}}</p>
   </div>
 </template>
 
@@ -9,6 +10,11 @@ export default {
   name: 'Chatpage',
   props: {
       
+  },
+  data(){
+    return{
+      test:'안녕하세요.'
+    }
   }
 }
 </script>
