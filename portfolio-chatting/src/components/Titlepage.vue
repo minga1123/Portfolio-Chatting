@@ -19,6 +19,9 @@ export default {
     return {
       test : '최민주'
     }
+  },
+  created() {
+    console.log('dddd');
   }
 }
 </script>

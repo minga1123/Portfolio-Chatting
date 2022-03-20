@@ -4,7 +4,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
-
+import "./plugins/socketPlugin";
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
