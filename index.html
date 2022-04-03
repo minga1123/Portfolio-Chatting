@@ -3,7 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <link href="css/app.css" rel="stylesheet"/>
-    <script src="js/canvas.js"></script>
+    <!-- <script src="js/canvas.js"></script> -->
+
+    <script>
+        
+        
+        window.onload = function animationCircle() {
+            var canvas = document.getElementById('canvas');
+            var circle1 = canvas.getContext('2d');
+            circle1.beginPath();
+            circle1.arc(400, 350, 15, 0, Math.PI * 2);
+            circle1.fillStyle = "#D5E2F2"
+            circle1.fill();
+            circle1.stroke();
+
+            var circle2 = canvas.getContext('2d');
+            circle2.beginPath();
+            circle2.arc(440, 350, 15, 0, Math.PI * 2);
+            circle2.fillStyle = "#B0D5D9"
+            circle2.fill();
+            circle2.stroke();
+
+            var circle3 = canvas.getContext('2d');
+            circle3.beginPath();
+            circle3.arc(480, 350, 15, 0, Math.PI * 2);
+            circle3.fillStyle = "#D4D9AD"
+            circle3.fill();
+            circle3.stroke();
+
+            var circle4 = canvas.getContext('2d');
+            circle4.beginPath();
+            circle4.arc(520, 350, 15, 0, Math.PI * 2);
+            circle4.fillStyle = "#F2E0C9"
+            circle4.fill();
+            circle4.stroke();
+        }
+
+
+    </script>
     <title>Canvas</title>    
 </head>
 <body>
