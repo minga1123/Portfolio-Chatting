@@ -11,8 +11,13 @@
         // 2. 호출 될때마다 화면을 지우고 다시 그려야함
         // 3. 원의 크기가 0.1초마다 증가 혹은 감소 해야함
         // 4. 원의 크기 최대는 20 최소는 10
-        
-        window.onload = function animationCircle() {
+
+        // circle1 = 10
+        // circle2 = 12
+        // circle3 = 14
+        // circle4 = 16
+
+        function animationCircle() {
             var canvas = document.getElementById('canvas');
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
             var circle1 = canvas.getContext('2d');
@@ -43,7 +48,7 @@
             circle4.fill();
             circle4.stroke();
         }
-
+        var startAnimation = setInterval(animationCircle, 100);
 
     </script>
     <title>Canvas</title>    
