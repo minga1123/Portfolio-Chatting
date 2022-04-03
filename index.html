@@ -8,16 +8,21 @@
     <script>
         
         // 1. 이 함수가 0.1초마다 계속 호출 되면서 화면을 그려줘야함
-        // 2. 호출 될 때마다 화면을 지우고 다시 그려야함
+        // 2. 호출 될때마다 화면을 지우고 다시 그려야함
         // 3. 원의 크기가 0.1초마다 증가 혹은 감소 해야함
         // 4. 원의 크기 최대는 20 최소는 10
-        // 5. circle1 = 10, 2 = 12, 3 = 14, 4 = 16;
-        window.onload = function animationCircle() {
+
+        // circle1 = 10
+        // circle2 = 12
+        // circle3 = 14
+        // circle4 = 16
+        // 뭐가 문제니
+
+        function animationCircle() {
             var canvas = document.getElementById('canvas');
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
             var circle1 = canvas.getContext('2d');
             circle1.beginPath();
-            //x좌표 y좌표 반지름 
             circle1.arc(400, 350, 15, 0, Math.PI * 2);
             circle1.fillStyle = "#D5E2F2"
             circle1.fill();
@@ -44,7 +49,7 @@
             circle4.fill();
             circle4.stroke();
         }
-
+        var startAnimation = setInterval(animationCircle, 100);
 
     </script>
     <title>Canvas</title>    
