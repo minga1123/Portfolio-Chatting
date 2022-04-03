@@ -18,13 +18,38 @@
         // circle4 = 16
         // 뭐가 문제니
 
+        var test1 = 10;
+        var test2 = 12;
+        var test3 = 14;
+        var test4 = 16;
+
+        var bool1 = false;
+        
+        //var 
+
+
         function animationCircle() {
             var canvas = document.getElementById('canvas');
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
             var circle1 = canvas.getContext('2d');
             circle1.beginPath();
-            circle1.arc(400, 350, 15, 0, Math.PI * 2);
+            circle1.arc(400, 350, test1, 0, Math.PI * 2);
             circle1.fillStyle = "#D5E2F2"
+            
+            if(test1 == 20){
+                bool1 = true;
+            }
+            else{
+                bool1 = false;
+            }
+        
+            if(bool1) {
+                test1--;
+            }
+            else {
+                test1++;
+            }   
+
             circle1.fill();
             circle1.stroke();
 
