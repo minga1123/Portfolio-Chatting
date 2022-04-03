@@ -12,11 +12,11 @@
         // 3. 원의 크기가 0.1초마다 증가 혹은 감소 해야함
         // 4. 원의 크기 최대는 20 최소는 10
 
-        // circle1 = 10
+        // circle1 = 10 
         // circle2 = 12
         // circle3 = 14
         // circle4 = 16
-        // 뭐가 문제니
+        // 
 
         var test1 = 10;
         var test2 = 12;
@@ -24,53 +24,90 @@
         var test4 = 16;
 
         var bool1 = false;
-        
-        //var 
-
+        var bool2 = false;
+        var bool3 = false;
+        var bool4 = false;
 
         function animationCircle() {
             var canvas = document.getElementById('canvas');
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
             var circle1 = canvas.getContext('2d');
             circle1.beginPath();
+            // x, y, 반지름, 시작각도, 끝각도(호도각 표기), 반시계방향 
             circle1.arc(400, 350, test1, 0, Math.PI * 2);
             circle1.fillStyle = "#D5E2F2"
-            
             if(test1 == 20){
                 bool1 = true;
             }
-            else{
+            else if(test1 ==10){
                 bool1 = false;
             }
-        
             if(bool1) {
                 test1--;
             }
             else {
                 test1++;
-            }   
-
+            }
             circle1.fill();
             circle1.stroke();
 
             var circle2 = canvas.getContext('2d');
             circle2.beginPath();
-            circle2.arc(440, 350, 15, 0, Math.PI * 2);
+            circle2.arc(440, 350, test2, 0, Math.PI * 2);
             circle2.fillStyle = "#B0D5D9"
+            if(test2 == 20){
+                bool2 = true;
+            }
+            else if(test2 ==10){
+                bool2 = false;
+            }
+        
+            if(bool2) {
+                test2--;
+            }
+            else {
+                test2++;
+            }
             circle2.fill();
             circle2.stroke();
 
             var circle3 = canvas.getContext('2d');
             circle3.beginPath();
-            circle3.arc(480, 350, 15, 0, Math.PI * 2);
+            circle3.arc(480, 350, test3, 0, Math.PI * 2);
             circle3.fillStyle = "#D4D9AD"
+            if(test3 == 20){
+                bool3 = true;
+            }
+            else if(test3 ==10){
+                bool3 = false;
+            }
+        
+            if(bool3) {
+                test3--;
+            }
+            else {
+                test3++;
+            }
             circle3.fill();
             circle3.stroke();
 
             var circle4 = canvas.getContext('2d');
             circle4.beginPath();
-            circle4.arc(520, 350, 15, 0, Math.PI * 2);
+            circle4.arc(520, 350, test4, 0, Math.PI * 2);
             circle4.fillStyle = "#F2E0C9"
+            if(test4 == 20){
+                bool4 = true;
+            }
+            else if(test4 ==10){
+                bool4 = false;
+            }
+        
+            if(bool4) {
+                test4--;
+            }
+            else {
+                test4++;
+            }
             circle4.fill();
             circle4.stroke();
         }
