@@ -1,7 +1,9 @@
 <template>
   <div>
     <MainWindow1>
-      
+      <div>
+        <img src="" alt="">
+      </div>
     </MainWindow1>
   </div>
 </template>

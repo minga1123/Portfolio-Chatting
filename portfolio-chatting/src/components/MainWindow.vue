@@ -1,5 +1,5 @@
 <template>
-  <div class="Window">
+  <div id="Window">
 
   </div>
 </template>
@@ -11,9 +11,9 @@ export default {
 </script>
 
 <style>
-.window{
+#window{
     width: 1440px;
     height: 2560px;
-    
+
 }
 </style>
