@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div id="inputDiv">
+
+    <input type="text">
+    <input type="button">
 
   </div>
 </template>
@@ -13,4 +16,8 @@ export default {
 </script>
 
 <style>
+#inputDiv{
+    width: 100%;
+    height: 100%;
+}
 </style>
