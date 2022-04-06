@@ -4,6 +4,7 @@
       <div id="imgArea1">
         <img id="loginIMG1" src="../assets/pin.png">
       </div>
+      <!-- ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄹㅇㅁㄴㅇㄹㅁㄴㅇㄹ -->
       <LoginComponent1></LoginComponent1>
     </Loginpage>
   </div>
