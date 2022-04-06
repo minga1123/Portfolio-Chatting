@@ -1,8 +1,6 @@
 <template>
   <div id="MainWindow1">
-      <div id="imgDiv">
-        <img id="loginIMG" src="../assets/pin.png"> 
-      </div>
+      <img id="loginIMG" src="../assets/pin.png"> 
       <LoginComponent1></LoginComponent1>
   </div>
 </template>
@@ -22,9 +20,5 @@ export default {
 #MainWindow1 {
   width: 2560px;
   height: 1440px;
-}
-#imgDiv{
-  width: 100%;
-  height: 100%;
 }
 </style>
