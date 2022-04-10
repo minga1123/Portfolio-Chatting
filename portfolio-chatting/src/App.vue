@@ -27,6 +27,8 @@
 .maincontainer {
   width: 1194px;
   height: 834px;
+  max-width: 1194px;
+  max-height: 834px;
   border : 1px solid black;
   border-radius: 25px;
 }
