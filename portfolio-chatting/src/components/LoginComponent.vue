@@ -1,17 +1,41 @@
 <template>
-  <div id="LoginComponent_input">
-      <input type="text" placeholder="">
-      <input type="button">
+  <div id="LoginComponent">
+    <div id="LoginComponent_top">
+      <input id="LoginComponent_input" type="text" placeholder="닉네임을 입력하세요.">
+      <b-button :pressed="false" variant="outline-info">입장하기</b-button>
+    </div>
+    <div id="LoginComponent_bottom">
+      <label id="LoginComponent_label">
+        <input type="checkbox" value="autoloign">자동로그인
+      </label>
+      <b-button :pressed="false" variant="outline-info">회원가입</b-button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    name : 'LoginComponent_input'
+    name : 'LoginComponent'
 
 }
 </script>
 
 <style>
+#LoginComponent{
+  width: auto;
+  height: auto;
+  
+}
+#LoginComponent_top{
+  margin: 10px;
+}
+#LoginComponent_bottom{
 
+}
+#LoginComponent_input{
+  margin-right: 10px;
+}
+#LoginComponent_label{
+  margin-right: 10px;
+}
 </style>

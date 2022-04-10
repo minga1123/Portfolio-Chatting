@@ -1,5 +1,5 @@
 <template>
-    <div id="MainWindow">
+    <div class="Loginpage">
         <div id="imgArea">
             <img id="loginIMG" src="../assets/pin.png" alt="">
         </div>
@@ -20,8 +20,13 @@ export default {
 </script>
 
 <style>
-.MainWindow{
-    width: 1440px;
-    height: 2560px;
+#imgArea{
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+}
+#loginIMG{
+  width: 500px;
+  height: 700px;
 }
 </style>
