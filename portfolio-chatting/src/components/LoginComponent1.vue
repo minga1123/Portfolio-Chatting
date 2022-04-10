@@ -1,8 +1,8 @@
 <template>
   <div id="inputDiv">
 
-    <input type="text">
-    <input type="button">
+    <input id="LoginInput" type="text" autocomplete="off" placeholder="닉네임을 입력하세요!">
+    <input id="LoginButton" type="button" value="접속하기">
 
   </div>
 </template>
@@ -17,7 +17,11 @@ export default {
 
 <style>
 #inputDiv{
-    width: 100%;
-    height: 100%;
+  width: auto;
+  height: auto;
+  margin-top: 20px;
+}
+#LoginInput {
+  margin-right: 10px;
 }
 </style>

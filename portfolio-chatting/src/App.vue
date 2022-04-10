@@ -6,7 +6,8 @@
       <router-link to="/Chatpage">Chatpage</router-link> |
       <router-link to="/Hello">Hello</router-link> |
     </div> -->
-    <router-link to="/Loginpage">Login</router-link>
+    <router-link to="/Loginpage">Login</router-link> |
+    <router-link to="/Loginpage1">Login1</router-link>
     <router-view class="maincontainer"/>
   </div>
 </template>
@@ -19,12 +20,13 @@
   text-align: center;
   color: #2c3e50;
   margin-left: 10px;
-  
+  width: auto;
+  height: auto;
   
 }
 .maincontainer {
-  width: 2560px;
-  height: 1440px;
+  width: 1194px;
+  height: 834px;
   border : 1px solid black;
   border-radius: 25px;
 }

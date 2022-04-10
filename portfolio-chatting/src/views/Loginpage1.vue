@@ -22,8 +22,9 @@ export default {
 
 <style>
 .imgArea1 {
-  max-width: 2560px;
-  max-height: 1440px;
+  width: auto;
+  height: auto;
+  margin-top: 10px;
 }
 #loginIMG1 {
   width: 500px;

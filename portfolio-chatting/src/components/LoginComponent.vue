@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name : LoginComponent
+    name : 'LoginComponent_input'
 
 }
 </script>
