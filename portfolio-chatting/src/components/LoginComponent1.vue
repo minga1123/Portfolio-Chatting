@@ -2,13 +2,13 @@
   <div id="inputDiv">
 
     <div id="LoginComponent_Top1">
-      <input id="LoginInput" type="text" autocomplete="off" placeholder="닉네임을 입력하세요!">
-      <b-button id="LoginButton" variant="outline-primary">입장하기</b-button>
+      <input id="LoginComponent_Input" type="text" autocomplete="off" placeholder="닉네임을 입력하세요!">
+      <b-button id="LoginComponent_Button" variant="outline-primary">입장하기</b-button>
     </div>
     
     <div id="LoginComponent_Bottom1">
       <label id="LoginComponent_label"><input type="checkbox" value="자동로그인"> 자동로그인</label>
-      <b-button id="LoginButton" variant="outline-primary">회원가입</b-button>
+      <b-button id="LoginComponent_signup" variant="outline-primary">회원가입</b-button>
     </div>
    
 
@@ -29,7 +29,7 @@ export default {
   height: auto;
   margin-top: 20px;
 }
-#LoginInput {
+#LoginComponent_Input {
   margin-left: 100px;
   margin-right: 10px;
   text-align: center;
