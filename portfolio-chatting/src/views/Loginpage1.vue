@@ -5,7 +5,10 @@
         <img id="loginIMG1" src="../assets/pin.png">
       </div>
       <!-- ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄹㅇㅁㄴㅇㄹㅁㄴㅇㄹ -->
-      <LoginComponent1></LoginComponent1>
+
+        <LoginComponent1></LoginComponent1>
+
+      
   </div>
   
 </template>
@@ -21,7 +24,7 @@ export default {
 </script>
 
 <style>
-.imgArea1 {
+#imgArea1 {
   width: auto;
   height: auto;
   margin-top: 10px;
