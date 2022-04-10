@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Titlepage</router-link> |
       <router-link to="/Mainpage">Mainpage</router-link> |
       <router-link to="/Chatpage">Chatpage</router-link> |
       <router-link to="/Hello">Hello</router-link> |
-    </div>
-    <router-view/>
+    </div> -->
+    <router-link to="/Loginpage">Login</router-link>
+    <router-view class="maincontainer"/>
   </div>
 </template>
 
@@ -17,6 +18,15 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-left: 10px;
+  
+  
+}
+.maincontainer {
+  width: 2560px;
+  height: 1440px;
+  border : 1px solid black;
+  border-radius: 25px;
 }
 
 #nav {

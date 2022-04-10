@@ -1,28 +1,32 @@
 <template>
-  <div id="mainWindow1">
-    <Loginpage>
+
+  <div class="Loginpage" >
       <div id="imgArea1">
         <img id="loginIMG1" src="../assets/pin.png">
       </div>
       <!-- ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄹㅇㅁㄴㅇㄹㅁㄴㅇㄹ -->
       <LoginComponent1></LoginComponent1>
-    </Loginpage>
   </div>
   
 </template>
 
 <script>
-import Loginpage from '../components/MainWindow1.vue'
 import LoginComponent1 from '../components/LoginComponent1.vue'
 export default {
 
   components: {
-    Loginpage : Loginpage,
     LoginComponent1 : LoginComponent1,
   },
 };
 </script>
 
 <style>
-
+.imgArea1 {
+  max-width: 2560px;
+  max-height: 1440px;
+}
+#loginIMG1 {
+  width: 500px;
+  height: 700px;
+}
 </style>

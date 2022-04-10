@@ -4,6 +4,7 @@ import helloWorld from '../components/HelloWorld.vue'
 import Titlepage from '../components/Titlepage.vue'
 import Mainpage from '../components/Mainpage.vue'
 import Chatpage from '../components/Chatpage.vue'
+import Loginpage from '../views/Loginpage1.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: helloWorld
+  },
+  {
+    path: '/Loginpage',
+    name: 'Loginpage',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Loginpage
   },
   
 ]
