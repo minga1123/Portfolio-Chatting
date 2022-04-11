@@ -30,7 +30,7 @@ export default {
   margin-top: 10px;
 }
 #loginIMG1 {
-  width: 500px;
-  height: 700px;
+  width: 300px;
+  height: 400px;
 }
 </style>
