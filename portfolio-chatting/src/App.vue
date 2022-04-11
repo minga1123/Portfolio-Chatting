@@ -19,20 +19,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-left: 10px;
+  margin : 0 auto;
   width: auto;
-  height: auto;
-  
+  height: 100vh;
+  border : 1px solid gray;
 }
-.maincontainer {
-  width: 1194px;
-  height: 834px;
-  max-width: 1194px;
-  max-height: 834px;
-  border : 1px solid black;
-  border-radius: 25px;
-}
-
 #nav {
   padding: 30px;
 }

@@ -23,10 +23,10 @@ export default {
 #imgArea{
   width: auto;
   height: auto;
-  margin-top: 10px;
 }
 #loginIMG{
-  width: 500px;
-  height: 700px;
+  width: 300px;
+  height: 400px;
+  margin: 10px;
 }
 </style>
