@@ -3,7 +3,8 @@
         <div id="imgArea">
             <img id="loginIMG" src="../assets/pin.png" alt="">
         </div>
-        <LoginComponent></LoginComponent>
+        <LoginComponent @open="openmodal"></LoginComponent>
+        
         <div v-if="SingupArea" id="SingupArea">
           <SingupComponent></SingupComponent>
         </div>
@@ -16,11 +17,17 @@ import LoginComponent from '../components/LoginComponent.vue';
 import SingupComponent from '../components/SingupComponent.vue';
 
 export default {
- data() {
-    
+  
+  data(){
+    return{
+      SingupArea: false,
+    }
   },
-  method : {
+  methods :{
+    openmodal(){ 
+      this.SingupArea=true;
 
+    }
   },
 
   components: { 
