@@ -8,15 +8,27 @@
       <label id="LoginComponent_label">
         <input type="checkbox" value="autoloign"> 자동로그인
       </label>
-      <b-button id="LoginComponent_signup" variant="outline-primary">회원가입</b-button>
+      <b-button id="LoginComponent_signup" variant="outline-primary" @click="SingupComponentOpen">회원가입</b-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    name : 'LoginComponent'
+  
+  data(){
+    return{
+      
+    }
+  },
+  name : 'LoginComponent',
 
+  methods :{
+    SingupComponentOpen(){
+      this.$emit('open');
+      //this.$emit('상위로 전달할 이벤트명')
+    }
+  }
 }
 </script>
 
@@ -29,7 +41,7 @@ export default {
   margin: 10px;
 }
 #LoginComponent_bottom{
-
+  
 }
 #LoginComponent_input{
   margin-right: 10px;
