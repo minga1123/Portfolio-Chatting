@@ -1,5 +1,5 @@
 <template>
-  <div id="LoginComponent">
+  <div class="LoginComponent">
     <div id="LoginComponent_top">
       <input id="LoginComponent_input" type="text" placeholder="닉네임을 입력하세요.">
       <b-button id="LoginComponent_Button" variant="outline-primary">입장하기</b-button>

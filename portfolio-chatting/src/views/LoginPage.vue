@@ -4,7 +4,7 @@
             <img id="loginIMG" src="../assets/pin.png" alt="">
         </div>
         <LoginComponent></LoginComponent>
-        <div id="SingupArea">
+        <div v-if="SingupArea" id="SingupArea">
           <SingupComponent></SingupComponent>
         </div>
     </div>
@@ -16,6 +16,13 @@ import LoginComponent from '../components/LoginComponent.vue';
 import SingupComponent from '../components/SingupComponent.vue';
 
 export default {
+ data() {
+    
+  },
+  method : {
+
+  },
+
   components: { 
       LoginComponent : LoginComponent,
       SingupComponent : SingupComponent
