@@ -9,7 +9,7 @@
       <LoginComponent1></LoginComponent1>
 
       <div id="SingupArea">
-
+        <SingupComponent1></SingupComponent1>
       </div>
       <!-- 팝업 컴포넌트를 넣고 v-if로 해야하나 -->
 
@@ -20,10 +20,16 @@
 
 <script>
 import LoginComponent1 from '../components/LoginComponent1.vue'
+import SingupComponent1 from '../components/SingupComponent1.vue'
 export default {
+
+  props : {
+    
+  },
 
   components: {
     LoginComponent1 : LoginComponent1,
+    SingupComponent1 : SingupComponent1,
   },
 };
 </script>
@@ -37,5 +43,15 @@ export default {
 #loginIMG1 {
   width: 300px;
   height: 400px;
+}
+#SingupArea {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  margin : 10px;
+  width: 98.5%;
+  height: 98vh;
+  background-color: rgb(111, 111, 111);
+
 }
 </style>
