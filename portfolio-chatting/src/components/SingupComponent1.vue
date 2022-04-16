@@ -40,6 +40,7 @@
 export default {
   name: 'SingupComponent1',
 
+  
 };
 </script>
 
