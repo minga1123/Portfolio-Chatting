@@ -9,7 +9,7 @@
       <LoginComponent1></LoginComponent1>
 
       <div id="SingupArea">
-
+        
       </div>
       <!-- 팝업 컴포넌트를 넣고 v-if로 해야하나 -->
 

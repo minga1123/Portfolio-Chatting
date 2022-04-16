@@ -4,16 +4,21 @@
             <img id="loginIMG" src="../assets/pin.png" alt="">
         </div>
         <LoginComponent></LoginComponent>
+        <div id="SingupArea">
+          <SingupComponent></SingupComponent>
+        </div>
     </div>
 </template>
 
 <script>
 
 import LoginComponent from '../components/LoginComponent.vue';
+import SingupComponent from '../components/SingupComponent.vue';
 
 export default {
   components: { 
-      LoginComponent : LoginComponent
+      LoginComponent : LoginComponent,
+      SingupComponent : SingupComponent
       },
 
 }
