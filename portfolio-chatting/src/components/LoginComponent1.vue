@@ -8,7 +8,7 @@
     
     <div id="LoginComponent_Bottom1">
       <label id="LoginComponent_label"><input type="checkbox" value="자동로그인"> 자동로그인</label>
-      <b-button @click="tests" id="LoginComponent_signup" variant="outline-primary">회원가입</b-button>
+      <b-button @click="sendModal" id="LoginComponent_signup" variant="outline-primary">회원가입</b-button>
     </div>
    
 
@@ -26,9 +26,10 @@ export default {
   },
 
   methods : {
-    tests() {
+    sendModal() {
       console.log('민주');
-      return true;
+      //이벤트 발생 
+      this.$emit('minga');
     }
   },
 

@@ -1,18 +1,18 @@
 <template>
 
-  <div class="Loginpage" >
+  <div class="Loginpage"  >
       <div id="imgArea1">
         <img id="loginIMG1" src="../assets/pin.png">
       </div>
       <!-- ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄹㅇㅁㄴㅇㄹㅁㄴㅇㄹ -->
 
-      <LoginComponent1></LoginComponent1>
+      <LoginComponent1 @minga="SingupComponentModalOpen"></LoginComponent1>
 
       <div v-if="SingupArea" id="SingupArea">
         <SingupComponent1></SingupComponent1>
       </div>
 
-      <input type="button" @click="test1">
+      <!-- <input type="button" @click="SingupComponentOpen"> -->
       <!-- 팝업 컴포넌트를 넣고 v-if로 해야하나 -->
 
       
@@ -34,16 +34,14 @@ export default {
       SingupArea: false,
     }
   },
-
+ // 이벤트를 기다리고 있다가 이벤트가 생기면 돌릴 메서드를 추가
   methods : {
-    test1() {
-      if(LoginComponent1.methods.tests() === true) {
-        this.SingupArea = true;
-      }
+    SingupComponentModalOpen() {
+      console.log('test');
+      this.SingupArea = true;
+      
     }
   },
-
-
 
   components: {
     LoginComponent1 : LoginComponent1,
