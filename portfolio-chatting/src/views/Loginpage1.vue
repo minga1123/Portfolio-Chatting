@@ -8,7 +8,7 @@
 
       <LoginComponent1></LoginComponent1>
 
-      <div id="SingupArea">
+      <div v-if="SingupArea" id="SingupArea">
         <SingupComponent1></SingupComponent1>
       </div>
       <!-- 팝업 컴포넌트를 넣고 v-if로 해야하나 -->
@@ -25,6 +25,18 @@ export default {
 
   props : {
     
+  },
+
+  data(){
+    return{
+      SingupArea: false,
+    }
+  },
+
+  methods : {
+    SingupAreaview() {
+      this.SingupArea = true;
+    }
   },
 
   components: {
