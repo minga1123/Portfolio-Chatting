@@ -1,15 +1,15 @@
 <template>
 
-  <div class="Loginpage"  >
-      <div id="imgArea1">
+  <div @closemodals1="closemodal" class="Loginpage"  >
+      <div   id="imgArea1">
         <img id="loginIMG1" src="../assets/pin.png">
       </div>
       <!-- ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄹㅇㅁㄴㅇㄹㅁㄴㅇㄹ -->
 
-      <LoginComponent1 @minga="SingupComponentModalOpen"></LoginComponent1>
+      <LoginComponent1   @minga="SingupComponentModalOpen"></LoginComponent1>
 
-      <div v-if="SingupArea" id="SingupArea">
-        <SingupComponent1></SingupComponent1>
+      <div  v-if="SingupArea" id="SingupArea">
+        <SingupComponent1 @closemodals="closemodal"></SingupComponent1>
       </div>
 
       <!-- <input type="button" @click="SingupComponentOpen"> -->
@@ -40,6 +40,10 @@ export default {
       console.log('test');
       this.SingupArea = true;
       
+    },
+    closemodal() {
+      console.log("제일 상단");
+      this.SingupArea = false;
     }
   },
 

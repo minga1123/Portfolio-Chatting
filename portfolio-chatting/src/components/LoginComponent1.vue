@@ -1,5 +1,5 @@
 <template>
-  <div id="inputDiv">
+  <div @closemodals ="test11" id="inputDiv">
 
     <div id="LoginComponent_Top1">
       <input id="LoginComponent_Input" type="text" autocomplete="off" placeholder="닉네임을 입력하세요!">
@@ -30,6 +30,10 @@ export default {
       console.log('민주');
       //이벤트 발생 
       this.$emit('minga');
+    },
+    test11() {
+        console.log("2번째");
+        this.$emit('closemodals');
     }
   },
 

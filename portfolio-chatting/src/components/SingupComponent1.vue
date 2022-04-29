@@ -28,7 +28,7 @@
         
 
         <div>
-            <b-button id="SingupComponent_Join" variant="outline-primary">가입하기</b-button>  
+            <b-button @click="testmethoed" id="SingupComponent_Join" variant="outline-primary">가입하기</b-button>  
         </div>
       </div>
 
@@ -40,7 +40,13 @@
 export default {
   name: 'SingupComponent1',
 
-  
+  methods : {
+      testmethoed() {
+          this.$emit('closemodals');
+          console.log("제일 하위");
+          
+      }
+  }
 };
 </script>
 
